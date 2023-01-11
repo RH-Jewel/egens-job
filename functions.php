@@ -252,7 +252,6 @@ require get_template_directory() . '/inc/customizer.php';
  */
 require get_template_directory() . '/inc/library/codestar-framework/codestar-framework.php';
 
-
 /**
  * Load library file.
  */

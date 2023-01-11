@@ -13328,3 +13328,8 @@ h5,
 .component-text-with-image img {
     width: 100%
 }
+
+
+ul#menu-huvudmeny {
+    margin: 0;
+}
