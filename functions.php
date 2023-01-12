@@ -210,15 +210,18 @@ add_action('widgets_init', 'egenslab_widgets_init');
  */
 function egenslab_scripts()
 {
+	wp_enqueue_style('egns-slick', get_template_directory_uri() . '/assets/css/slick.css', array(), _S_VERSION, 'all');
 	wp_enqueue_style('egns-classic', get_template_directory_uri() . '/assets/css/classic-themes.min.css', array(), _S_VERSION, 'all');
 	wp_enqueue_style('egns-style', get_template_directory_uri() . '/assets/css/style.css', array(), _S_VERSION, 'all');
 	wp_enqueue_style('egns-style-min', get_template_directory_uri() . '/assets/css/style.min.css', array(), _S_VERSION, 'all');
+	wp_enqueue_style('egns-slick-css', get_template_directory_uri() . '/assets/css/slick-theme.css', array(), _S_VERSION, 'all');
 
 	wp_enqueue_style('egenslab-style', get_stylesheet_uri(), array(), _S_VERSION);
 	wp_style_add_data('egenslab-style', 'rtl', 'replace');
 
 
 	wp_enqueue_script('egenslab-navigation', get_template_directory_uri() . '/assets/js/app.min.js', array('jquery'), _S_VERSION, true);
+	wp_enqueue_script('egenslab-slick-js', get_template_directory_uri() . '/assets/js/slick.js', array('jquery'), _S_VERSION, true);
 
 
 	if (is_singular() && comments_open() && get_option('thread_comments')) {

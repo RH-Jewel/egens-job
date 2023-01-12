@@ -77,7 +77,16 @@ class Elementor_Our_Office_Widget extends \Elementor\Widget_Base
             [
                 'label' => esc_html__('Location Name', 'egenslab'),
                 'type' => \Elementor\Controls_Manager::TEXT,
-                'default' => esc_html__('Johan', 'egenslab'),
+                'default' => esc_html__('Arvika', 'egenslab'),
+                'label_block' => true,
+            ]
+        );
+        $repeater->add_control(
+            'egens_our_office_location_id',
+            [
+                'label' => esc_html__('Location ID', 'egenslab'),
+                'type' => \Elementor\Controls_Manager::TEXT,
+                'default' => esc_html__('Värmland', 'egenslab'),
                 'label_block' => true,
             ]
         );
@@ -112,7 +121,7 @@ class Elementor_Our_Office_Widget extends \Elementor\Widget_Base
                         'egens_our_office_location' => esc_html__('Borlänge', 'egenslab'),
                         'list_content' => esc_html__('Item content. Click the edit button to change this text.', 'egenslab'),
                     ],
-                   
+
                 ],
                 'title_field' => '{{{ egens_our_office_location }}}',
             ]
@@ -141,7 +150,10 @@ class Elementor_Our_Office_Widget extends \Elementor\Widget_Base
                                 <div class="custom-select position-relative is-hidden"> <span class="active-li js-active-li"> <span class="js-current-office"><?php echo (!empty($settings['egens_our_office_current_office']) ? esc_html__($settings['egens_our_office_current_office'], 'egenslab') : '') ?></span> <i class="icon-arrow-down"></i> </span>
                                     <ul>
                                         <?php foreach ($data as $item) : ?>
-                                            <li> <a href="<?php echo (!empty($item['egens_our_office_location_link']['url']) ? esc_url($item['egens_our_office_location_link']['url']) : '') ?>" data-county-name="Värmland"> </a> <?php echo (!empty($item['egens_our_office_location']) ? esc_html__($item['egens_our_office_location'], 'egenslab') : '') ?> </li>
+                                            <li>
+                                                <a href="<?php echo (!empty($item['egens_our_office_location_link']['url']) ? esc_url($item['egens_our_office_location_link']['url']) : '') ?>" data-county-name="<?php echo esc_attr__(!empty($item['egens_our_office_location_id']) ? esc_html__($item['egens_our_office_location_id'], 'egenslab') : '') ?>"> </a>
+                                                <?php echo (!empty($item['egens_our_office_location']) ? esc_html__($item['egens_our_office_location'], 'egenslab') : '') ?>
+                                            </li>
                                         <?php endforeach ?>
                                     </ul>
                                 </div>

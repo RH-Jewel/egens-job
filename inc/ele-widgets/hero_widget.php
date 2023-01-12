@@ -84,7 +84,16 @@ class Elementor_Hero_Widget extends \Elementor\Widget_Base
             [
                 'label' => esc_html__('Total Jobs', 'egenslab'),
                 'type' => \Elementor\Controls_Manager::TEXT,
-                'default' => wp_kses('<b>238</b> jobb',wp_kses_allowed_html('post')),
+                'default' => wp_kses('<b>238</b> jobb', wp_kses_allowed_html('post')),
+                'label_block' => true,
+            ]
+        );
+        $this->add_control(
+            'egens_hero_jobs_search_placeholder_title',
+            [
+                'label' => esc_html__('Jobs Search Placeholder', 'egenslab'),
+                'type' => \Elementor\Controls_Manager::TEXT,
+                'default' => esc_html__('Sök på ort, stad eller yrke', 'egenslab'),
                 'label_block' => true,
             ]
         );
@@ -118,33 +127,17 @@ class Elementor_Hero_Widget extends \Elementor\Widget_Base
 
         <section class="component component-hero no-padding">
             <div class="row no-gutters">
-                <div class="hero-slideshow align-self-start col-6 slider-left slick-initialized slick-slider slick-vertical">
-                    <div class="slick-list draggable">
-                        <div class="slick-track">
-                            <?php foreach ($settings['egens_hero_left_gallery'] as $img) : ?>
-                                <div class="slick-slide">
-                                    <div>
-                                        <div class="hero-slideshow__item" style="background-image: url(<?php echo (!empty($img['url']) ? esc_url($img['url']) : '') ?>); width: 100%; display: inline-block;">
-                                        </div>
-                                    </div>
-                                </div>
-                            <?php endforeach ?>
+                <div class="hero-slideshow align-self-start col-6 slider-left">
+                    <?php foreach ($settings['egens_hero_left_gallery'] as $img) : ?>
+                        <div class="hero-slideshow__item" style="background-image:url('<?php echo (!empty($img['url']) ? esc_url($img['url']) : '') ?>')">
                         </div>
-                    </div>
+                    <?php endforeach ?>
                 </div>
-                <div class="hero-slideshow align-self-start col-6 slider-right slick-initialized slick-slider slick-vertical">
-                    <div class="slick-list draggable">
-                        <div class="slick-track">
-                            <?php foreach ($settings['egens_hero_right_gallery'] as $img2) : ?>
-                                <div class="slick-slide">
-                                    <div>
-                                        <div class="hero-slideshow__item" style="background-image: url(<?php echo (!empty($img2['url']) ? esc_url($img2['url']) : '') ?>); width: 100%; display: inline-block;">
-                                        </div>
-                                    </div>
-                                </div>
-                            <?php endforeach ?>
+                <div class="hero-slideshow align-self-start col-6 slider-right">
+                    <?php foreach ($settings['egens_hero_right_gallery'] as $img2) : ?>
+                        <div class="hero-slideshow__item" style="background-image:url('<?php echo (!empty($img2['url']) ? esc_url($img2['url']) : '') ?>')">
                         </div>
-                    </div>
+                    <?php endforeach ?>
                 </div>
             </div>
             <div class="container-fluid hero-content d-flex align-items-center justify-content-center">
@@ -155,8 +148,8 @@ class Elementor_Hero_Widget extends \Elementor\Widget_Base
                             <?php if (!empty($settings['egens_hero_desc'])) : ?>
                                 <p class="font-size-large"><?php echo wp_kses($settings['egens_hero_desc'], wp_kses_allowed_html('post')) ?></p>
                             <?php endif ?>
-                            <form role="search" method="get" class="search-form" action="<?php echo (!empty($settings['egens_hero_jobs_search_link']['url'])? esc_url($settings['egens_hero_jobs_search_link']['url']) :'') ?>">
-                                <input type="search" name="q" placeholder="<?php echo esc_attr__('Sök på ort, stad eller yrke','egenslab') ?>"> <button type="submit"> <i class="icon-search"></i> <span><?php echo (!empty($settings['egens_hero_jobs_number'])? wp_kses($settings['egens_hero_jobs_number'],wp_kses_allowed_html('post')): '') ?>  </span> </button>
+                            <form role="search" method="get" class="search-form" action="<?php echo (!empty($settings['egens_hero_jobs_search_link']['url']) ? esc_url($settings['egens_hero_jobs_search_link']['url']) : '') ?>">
+                                <input type="search" name="q" placeholder="<?php echo esc_attr__(!empty($settings['egens_hero_jobs_search_placeholder_title']) ? esc_html__($settings['egens_hero_jobs_search_placeholder_title'], 'egenslab') : '') ?>"> <button type="submit"> <i class="icon-search"></i> <span> <?php echo (!empty($settings['egens_hero_jobs_number']) ? wp_kses($settings['egens_hero_jobs_number'], wp_kses_allowed_html('post')) : '') ?> </span> </button>
                             </form>
                         </div>
                     </div>
