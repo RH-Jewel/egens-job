@@ -41,6 +41,7 @@ class Elementor_Our_Office_Widget extends \Elementor\Widget_Base
             ]
         );
 
+
         $this->add_control(
             'egens_our_office_heading_title',
             [
@@ -131,7 +132,7 @@ class Elementor_Our_Office_Widget extends \Elementor\Widget_Base
         $data = $settings['egens_our_office_location_list'];
 ?>
 
-        <section class="component component-columns primary-color-bg ">
+        <section class="component component-columns primary-color-bg">
             <div class="container">
                 <div class="row js-content-row">
                     <div class="component-column col-12 medium-column">

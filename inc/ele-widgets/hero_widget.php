@@ -79,40 +79,6 @@ class Elementor_Hero_Widget extends \Elementor\Widget_Base
             ]
         );
 
-        $this->add_control(
-            'egens_hero_jobs_number',
-            [
-                'label' => esc_html__('Total Jobs', 'egenslab'),
-                'type' => \Elementor\Controls_Manager::TEXT,
-                'default' => wp_kses('<b>238</b> jobb', wp_kses_allowed_html('post')),
-                'label_block' => true,
-            ]
-        );
-        $this->add_control(
-            'egens_hero_jobs_search_placeholder_title',
-            [
-                'label' => esc_html__('Jobs Search Placeholder', 'egenslab'),
-                'type' => \Elementor\Controls_Manager::TEXT,
-                'default' => esc_html__('Sök på ort, stad eller yrke', 'egenslab'),
-                'label_block' => true,
-            ]
-        );
-        $this->add_control(
-            'egens_hero_jobs_search_link',
-            [
-                'label' => esc_html__('Job Search Link', 'egenslab'),
-                'type' => \Elementor\Controls_Manager::URL,
-                'placeholder' => esc_html__('https://your-link.com', 'egenslab'),
-                'options' => ['url', 'is_external', 'nofollow'],
-                'default' => [
-                    'url' => '',
-                    'is_external' => true,
-                    'nofollow' => true,
-                    // 'custom_attributes' => '',
-                ],
-                'label_block' => true,
-            ]
-        );
         $this->end_controls_section();
 
         // Content Tab End
@@ -148,8 +114,8 @@ class Elementor_Hero_Widget extends \Elementor\Widget_Base
                             <?php if (!empty($settings['egens_hero_desc'])) : ?>
                                 <p class="font-size-large"><?php echo wp_kses($settings['egens_hero_desc'], wp_kses_allowed_html('post')) ?></p>
                             <?php endif ?>
-                            <form role="search" method="get" class="search-form" action="<?php echo (!empty($settings['egens_hero_jobs_search_link']['url']) ? esc_url($settings['egens_hero_jobs_search_link']['url']) : '') ?>">
-                                <input type="search" name="q" placeholder="<?php echo esc_attr__(!empty($settings['egens_hero_jobs_search_placeholder_title']) ? esc_html__($settings['egens_hero_jobs_search_placeholder_title'], 'egenslab') : '') ?>"> <button type="submit"> <i class="icon-search"></i> <span> <?php echo (!empty($settings['egens_hero_jobs_number']) ? wp_kses($settings['egens_hero_jobs_number'], wp_kses_allowed_html('post')) : '') ?> </span> </button>
+                            <form role="search" method="get" class="search-form" action="https://www.uniflex.se/jobb/">
+                                <input type="search" name="q" placeholder="Sök på ort, stad eller yrke"> <button type="submit"> <i class="icon-search"></i> <span> <b>257</b> jobb </span> </button>
                             </form>
                         </div>
                     </div>
