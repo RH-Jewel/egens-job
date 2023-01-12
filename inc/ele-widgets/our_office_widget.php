@@ -81,15 +81,7 @@ class Elementor_Our_Office_Widget extends \Elementor\Widget_Base
                 'label_block' => true,
             ]
         );
-        $repeater->add_control(
-            'egens_our_office_location_id',
-            [
-                'label' => esc_html__('Location ID', 'egenslab'),
-                'type' => \Elementor\Controls_Manager::TEXT,
-                'default' => esc_html__('Värmland', 'egenslab'),
-                'label_block' => true,
-            ]
-        );
+       
         $repeater->add_control(
             'egens_our_office_location_link',
             [
@@ -151,8 +143,8 @@ class Elementor_Our_Office_Widget extends \Elementor\Widget_Base
                                     <ul>
                                         <?php foreach ($data as $item) : ?>
                                             <li>
-                                                <a href="<?php echo (!empty($item['egens_our_office_location_link']['url']) ? esc_url($item['egens_our_office_location_link']['url']) : '') ?>" data-county-name="<?php echo esc_attr__(!empty($item['egens_our_office_location_id']) ? esc_html__($item['egens_our_office_location_id'], 'egenslab') : '') ?>"> </a>
-                                                <?php echo (!empty($item['egens_our_office_location']) ? esc_html__($item['egens_our_office_location'], 'egenslab') : '') ?>
+                                                <a href="<?php echo (!empty($item['egens_our_office_location_link']['url']) ? esc_url($item['egens_our_office_location_link']['url']) : '') ?>"> <?php echo (!empty($item['egens_our_office_location']) ? esc_html__($item['egens_our_office_location'], 'egenslab') : '') ?></a>
+
                                             </li>
                                         <?php endforeach ?>
                                     </ul>
