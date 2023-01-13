@@ -42,17 +42,6 @@ class Elementor_Jobs_Banner_Widget extends \Elementor\Widget_Base
         );
 
         $this->add_control(
-            'egens_job_banner_image',
-            [
-                'label' => esc_html__('Image', 'egenslab'),
-                'type' => \Elementor\Controls_Manager::MEDIA,
-                'default' => [
-                    'url' => \Elementor\Utils::get_placeholder_image_src(),
-                ],
-            ]
-        );
-
-        $this->add_control(
             'egens_job_banner_title',
             [
                 'label' => esc_html__('Title', 'egenslab'),
