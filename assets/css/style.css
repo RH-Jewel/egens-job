@@ -12299,18 +12299,26 @@ h5,
     padding-left: 37px
 }
 
-.component-featured-employees .employee-content--name:hover i {
+.component-featured-employees .employee-content--name:hover p {
     width: 100%;
-    color: #ff7200;
     font-size: 27px;
     font-size: 1.6875rem
 }
-
+.component-featured-employees .employee-content--name:hover p svg{
+    height: 30px;
+    width: 30px;
+    fill: #ff7200;
+}
+.component-featured-employees .employee-content--name:hover p svg path{
+    height: 30px;
+    width: 30px;
+    fill: #ff7200;
+}
 .component-featured-employees .employee-content--name:hover .name {
     color: #000
 }
 
-.component-featured-employees .employee-content--name i {
+.component-featured-employees .employee-content--name p {
     height: 80px;
     width: 80px;
     border-radius: 80px;
