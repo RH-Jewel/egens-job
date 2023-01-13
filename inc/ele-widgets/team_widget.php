@@ -20,7 +20,7 @@ class Elementor_Team_Widget extends \Elementor\Widget_Base
 
     public function get_categories()
     {
-        return ['basic'];
+        return ['egens_widgets'];
     }
 
     public function get_keywords()
@@ -98,23 +98,23 @@ class Elementor_Team_Widget extends \Elementor\Widget_Base
                 'fields' => $repeater->get_controls(),
                 'default' => [
                     [
-                        'egens_feature_employee_name' => esc_html__('Borås', 'egenslab'),
+                        'egens_team_member_name' => esc_html__('Borås', 'egenslab'),
                         'list_content' => esc_html__('Item content. Click the edit button to change this text.', 'egenslab'),
                     ],
                     [
-                        'egens_feature_employee_name' => esc_html__('Enköping', 'egenslab'),
+                        'egens_team_member_name' => esc_html__('Enköping', 'egenslab'),
                         'list_content' => esc_html__('Item content. Click the edit button to change this text.', 'egenslab'),
                     ],
                     [
-                        'egens_feature_employee_name' => esc_html__('Eskilstuna', 'egenslab'),
+                        'egens_team_member_name' => esc_html__('Eskilstuna', 'egenslab'),
                         'list_content' => esc_html__('Item content. Click the edit button to change this text.', 'egenslab'),
                     ],
                     [
-                        'egens_feature_employee_name' => esc_html__('Gävle', 'egenslab'),
+                        'egens_team_member_name' => esc_html__('Gävle', 'egenslab'),
                         'list_content' => esc_html__('Item content. Click the edit button to change this text.', 'egenslab'),
                     ],
                 ],
-                'title_field' => '{{{ egens_feature_employee_name }}}',
+                'title_field' => '{{{ egens_team_member_name }}}',
             ]
         );
 

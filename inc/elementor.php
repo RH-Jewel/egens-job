@@ -26,3 +26,19 @@ function register_egens_widget( $widgets_manager ) {
 
 //register hook
 add_action( 'elementor/widgets/register', 'register_egens_widget' );
+
+
+//registering custom category
+function egens_widget_categories( $elements_manager ) {
+
+	$elements_manager->add_category(
+		'egens_widgets',
+		[
+			'title' => esc_html__( 'EG Widgets', 'egenslab' ),
+			'icon' => 'fa fa-plug',
+		]
+	);
+	
+
+}
+add_action( 'elementor/elements/categories_registered', 'egens_widget_categories' );

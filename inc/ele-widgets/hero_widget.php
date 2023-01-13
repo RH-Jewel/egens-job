@@ -20,7 +20,7 @@ class Elementor_Hero_Widget extends \Elementor\Widget_Base
 
     public function get_categories()
     {
-        return ['basic'];
+        return ['egens_widgets'];
     }
 
     public function get_keywords()

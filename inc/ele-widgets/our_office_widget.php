@@ -20,7 +20,7 @@ class Elementor_Our_Office_Widget extends \Elementor\Widget_Base
 
     public function get_categories()
     {
-        return ['basic'];
+        return ['egens_widgets'];
     }
 
     public function get_keywords()
