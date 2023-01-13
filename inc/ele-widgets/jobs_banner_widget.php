@@ -60,7 +60,9 @@ class Elementor_Jobs_Banner_Widget extends \Elementor\Widget_Base
             ]
         );
 
-        $this->add_control(
+        $repeater = new \Elementor\Repeater();
+
+        $repeater->add_control(
             'egens_job_banner_button_title',
             [
                 'label' => esc_html__('Button Text', 'egenslab'),
@@ -71,7 +73,7 @@ class Elementor_Jobs_Banner_Widget extends \Elementor\Widget_Base
         );
 
 
-        $this->add_control(
+        $repeater->add_control(
             'egens_job_banner_button_link',
             [
                 'label' => esc_html__('Link', 'egenslab'),
@@ -88,6 +90,31 @@ class Elementor_Jobs_Banner_Widget extends \Elementor\Widget_Base
             ]
         );
 
+        $this->add_control(
+            'egens_job_banner_button_list',
+            [
+                'label' => esc_html__('Employee List', 'egenslab'),
+                'type' => \Elementor\Controls_Manager::REPEATER,
+                'fields' => $repeater->get_controls(),
+                'default' => [
+                    [
+                        'egens_job_banner_button_title' => esc_html__('Investor Relations', 'egenslab'),
+                        'list_content' => esc_html__('Item content. Click the edit button to change this text.', 'egenslab'),
+                    ],
+                    [
+                        'egens_job_banner_button_title' => esc_html__('Bolagsstyrning', 'egenslab'),
+                        'list_content' => esc_html__('Item content. Click the edit button to change this text.', 'egenslab'),
+                    ],
+                    [
+                        'egens_job_banner_button_title' => esc_html__('Pressreleaser', 'egenslab'),
+                        'list_content' => esc_html__('Item content. Click the edit button to change this text.', 'egenslab'),
+                    ],
+
+                ],
+                'title_field' => '{{{ egens_job_banner_button_title }}}',
+            ]
+        );
+
 
         $this->end_controls_section();
 
@@ -99,6 +126,7 @@ class Elementor_Jobs_Banner_Widget extends \Elementor\Widget_Base
     protected function render()
     {
         $settings = $this->get_settings_for_display();
+        $data = $settings['egens_job_banner_button_list'];
 ?>
 
         <section class="component component-image-block no-padding has-shape has-margin-left">
@@ -109,7 +137,11 @@ class Elementor_Jobs_Banner_Widget extends \Elementor\Widget_Base
                             <div class="entry-content white-text-color">
                                 <h2 class="h2--xl" style="text-align: center;"><?php echo (!empty($settings['egens_job_banner_title']) ? esc_html__($settings['egens_job_banner_title'], 'egenslab') : '') ?></h2>
                                 <p class="font-size-large" style="text-align: center;"><?php echo (!empty($settings['egens_job_banner_desc']) ? esc_html__($settings['egens_job_banner_desc'], 'egenslab') : '') ?></p>
-                                <p style="text-align: center;"><a class="btn btn--small" href="<?php echo (!empty($settings['egens_job_banner_button_link']['url']) ? esc_url($settings['egens_job_banner_button_link']['url']) : '') ?>"><?php echo (!empty($settings['egens_job_banner_button_title']) ? esc_html__($settings['egens_job_banner_button_title'], 'egenslab') : '') ?></a></p>
+                                <p style="text-align: center;">
+                                    <?php foreach ($data as $item) : ?>
+                                        <a class="btn btn--small" href="<?php echo (!empty($item['egens_job_banner_button_link']['url']) ? esc_url($item['egens_job_banner_button_link']['url']) : '') ?>"><?php echo (!empty($item['egens_job_banner_button_title']) ? esc_html__($item['egens_job_banner_button_title'], 'egenslab') : '') ?></a>
+                                    <?php endforeach ?>
+                                </p>
                             </div>
                         </div>
                     </div>
