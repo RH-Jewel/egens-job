@@ -13335,3 +13335,23 @@ h5,
 ul#menu-huvudmeny {
     margin: 0;
 }
+
+/* added css */
+.component-image-block.has-shape .content:before {
+    content: '';
+    background-image: url("../images/block-lg-bg.svg");
+    background-position: right center;
+    background-size: contain;
+    position: absolute;
+    top: -65px;
+    bottom: -65px;
+    right: 0;
+    z-index: -1;
+    display: block;
+    height: calc( 100% + 130px);
+    width: 100%;
+}
+
+.component-image-block a:visited {
+    color: #fff;
+}
