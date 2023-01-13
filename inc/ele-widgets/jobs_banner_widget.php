@@ -42,6 +42,17 @@ class Elementor_Jobs_Banner_Widget extends \Elementor\Widget_Base
         );
 
         $this->add_control(
+            'egens_job_banner_image',
+            [
+                'label' => esc_html__('Image', 'egenslab'),
+                'type' => \Elementor\Controls_Manager::MEDIA,
+                'default' => [
+                    'url' => \Elementor\Utils::get_placeholder_image_src(),
+                ],
+            ]
+        );
+
+        $this->add_control(
             'egens_job_banner_title',
             [
                 'label' => esc_html__('Title', 'egenslab'),
@@ -69,24 +80,24 @@ class Elementor_Jobs_Banner_Widget extends \Elementor\Widget_Base
                 'label_block' => true,
             ]
         );
-       
+
 
         $this->add_control(
-			'egens_job_banner_button_link',
-			[
-				'label' => esc_html__( 'Link', 'egenslab' ),
-				'type' => \Elementor\Controls_Manager::URL,
-				'placeholder' => esc_html__( 'https://your-link.com', 'egenslab' ),
-				'options' => [ 'url', 'is_external', 'nofollow' ],
-				'default' => [
-					'url' => '',
-					'is_external' => true,
-					'nofollow' => true,
-					// 'custom_attributes' => '',
-				],
-				'label_block' => true,
-			]
-		);
+            'egens_job_banner_button_link',
+            [
+                'label' => esc_html__('Link', 'egenslab'),
+                'type' => \Elementor\Controls_Manager::URL,
+                'placeholder' => esc_html__('https://your-link.com', 'egenslab'),
+                'options' => ['url', 'is_external', 'nofollow'],
+                'default' => [
+                    'url' => '',
+                    'is_external' => true,
+                    'nofollow' => true,
+                    // 'custom_attributes' => '',
+                ],
+                'label_block' => true,
+            ]
+        );
 
 
         $this->end_controls_section();
@@ -102,7 +113,7 @@ class Elementor_Jobs_Banner_Widget extends \Elementor\Widget_Base
 ?>
 
         <section class="component component-image-block no-padding has-shape has-margin-left">
-            <div class="content" style="background-image: url(''); background-size: cover;">
+            <div class="content" style="background-image: url('<?php echo (!empty($settings['egens_job_banner_image']['url']) ? esc_url($settings['egens_job_banner_image']['url']) : '') ?>'); background-size: cover;">
                 <div class="row no-gutters h-100">
                     <div class="col">
                         <div class="d-flex align-items-center justify-content-center h-100">
