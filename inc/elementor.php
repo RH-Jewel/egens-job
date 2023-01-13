@@ -10,7 +10,8 @@ function register_egens_widget( $widgets_manager ) {
 	require_once( __DIR__ . '/ele-widgets/our_office_widget.php' );
 	require_once( __DIR__ . '/ele-widgets/faq_widget.php' );
 	require_once( __DIR__ . '/ele-widgets/job_search_widget.php' );
-	require_once( __DIR__ . '/ele-widgets/team_widget.php' );
+	require_once( __DIR__ . '/ele-widgets/jobs_widget.php' );
+	require_once( __DIR__ . '/ele-widgets/jobs_banner_widget.php' );
 
 	//registering widgets
 	$widgets_manager->register( new \Elementor_Hero_Widget() );
@@ -20,7 +21,8 @@ function register_egens_widget( $widgets_manager ) {
 	$widgets_manager->register( new \Elementor_Our_Office_Widget() );
 	$widgets_manager->register( new \Elementor_Faq_Widget() );
 	$widgets_manager->register( new \Elementor_Job_Search_Widget() );
-	$widgets_manager->register( new \Elementor_Team_Widget() );
+	$widgets_manager->register( new \Elementor_Jobs_Widget() );
+	$widgets_manager->register( new \Elementor_Jobs_Banner_Widget() );
 
 }
 
