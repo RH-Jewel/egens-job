@@ -90,7 +90,7 @@ class Elementor_Job_Features_Widget extends \Elementor\Widget_Base
                 'placeholder' => esc_html__('https://your-link.com', 'egenslab'),
                 'options' => ['url', 'is_external', 'nofollow'],
                 'default' => [
-                    'url' => '',
+                    'url' => 'https://www.uniflex.se/sok-jobb/jobba-pa-uniflex/',
                     'is_external' => true,
                     'nofollow' => true,
                     // 'custom_attributes' => '',
@@ -171,7 +171,7 @@ class Elementor_Job_Features_Widget extends \Elementor\Widget_Base
                             <div class="slideshow--item">
                                 <div class="entry-content">
                                     <p><img decoding="async" src="<?php echo (!empty($item['egens_job_features_image']['url']) ? esc_url($item['egens_job_features_image']['url']) : '') ?>" alt="<?php echo esc_attr__('Uniflex Bemanning - Logistik', 'egenslab') ?>" data-name="image"></p>
-                                    <h3><?php echo (!empty($item['egens_job_features_title']) ? esc_html__($item['egens_job_features_title'], 'egenslab') : '') ?></h3>
+                                    <h3><a href="<?php echo (!empty($item['egens_job_features_link']['url']) ? esc_url($item['egens_job_features_link']['url']) : '') ?>"><?php echo (!empty($item['egens_job_features_title']) ? esc_html__($item['egens_job_features_title'], 'egenslab') : '') ?></a></h3>
                                     <p><?php echo (!empty($item['egens_job_features_desc']) ? wp_kses($item['egens_job_features_desc'], wp_kses_allowed_html('post')) : '') ?></p>
                                 </div>
                             </div>
