@@ -12304,16 +12304,19 @@ h5,
     font-size: 27px;
     font-size: 1.6875rem
 }
-.component-featured-employees .employee-content--name:hover p svg{
+
+.component-featured-employees .employee-content--name:hover p svg {
     height: 30px;
     width: 30px;
     fill: #ff7200;
 }
-.component-featured-employees .employee-content--name:hover p svg path{
+
+.component-featured-employees .employee-content--name:hover p svg path {
     height: 30px;
     width: 30px;
     fill: #ff7200;
 }
+
 .component-featured-employees .employee-content--name:hover .name {
     color: #000
 }
@@ -13347,7 +13350,7 @@ ul#menu-huvudmeny {
 /* added css */
 .component-image-block.has-shape .content:before {
     content: '';
-    background-image: url("../images/block-lg-bg.svg");
+    background-image: url("../img/block-lg-bg.svg");
     background-position: right center;
     background-size: contain;
     position: absolute;
@@ -13356,10 +13359,18 @@ ul#menu-huvudmeny {
     right: 0;
     z-index: -1;
     display: block;
-    height: calc( 100% + 130px);
+    height: calc(100% + 130px);
     width: 100%;
 }
 
 .component-image-block a:visited {
     color: #fff;
+}
+
+.component-slideshow .entry-content a:visited {
+    color: #ff7200;
+}
+
+.component:not(.no-padding) {
+    padding: 60px 0;
 }

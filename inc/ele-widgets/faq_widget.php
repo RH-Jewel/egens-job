@@ -108,9 +108,11 @@ class Elementor_Faq_Widget extends \Elementor\Widget_Base
 
 
         <section class="component component-faq default-bg">
-            <div class="bg-image-wrapper">
-                <img width="900" height="762" src="<?php echo (!empty($settings['egens_faq_image']['url']) ? esc_url($settings['egens_faq_image']['url']) : '') ?>" class="<?php echo esc_attr__('attachment-faq size-faq','egenslab') ?>">
-            </div>
+            <?php if( !empty( $settings['egens_faq_image']['url'] ) ) : ?>
+                <div class="bg-image-wrapper">
+                    <img width="900" height="762" src="<?php echo  esc_url($settings['egens_faq_image']['url']) ?>" class="<?php echo esc_attr__('attachment-faq size-faq','egenslab') ?>">
+                </div>
+            <?php endif ?>
             <div class="container">
                 <div class="row">
                     <div class="col">
