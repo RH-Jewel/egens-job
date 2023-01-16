@@ -266,3 +266,12 @@ require get_template_directory() . '/inc/theme-option/theme-options.php';
  * Load Elementor file.
  */
 require get_template_directory() . '/inc/elementor.php';
+
+
+function add_query_vars_filter( $vars ){
+	$vars[] = "slug";
+	$vars[] = "job_id";
+	return $vars;
+  }
+  
+  add_filter( 'query_vars', 'add_query_vars_filter' );
