@@ -1,5 +1,15 @@
 @import url(//db.onlinewebfonts.com/c/0545b648e6ea2b14311e2a15952a9b0c?family=Franklin+Gothic);
 
+@font-face {
+    font-family: fontello1;
+    src: url(fonts/fontello346d.ttf);
+}
+
+@font-face {
+    font-family: fontello2;
+    src: url(fonts/fontello346d.woff);
+}
+
 .text-left {
     text-align: left
 }
