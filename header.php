@@ -45,14 +45,14 @@ get_header();
 	<?php wp_head() ?>
 </head>
 
-<body <?php body_class('home page-template-default page page-id-869') ?> >
+<body <?php body_class('home page-template-default page page-id-869') ?>>
 	<?php wp_body_open(); ?>
 
 	<header class="site-header">
 		<div class="row h-100 no-gutters">
 			<div class="d-flex col justify-content-between h-100">
 				<div class="px-3 site-logo px-sm-4 d-flex align-items-center primary-color-bg">
-					<a href="index.html" title="Uniflex" rel="home">
+					<a href="<?php site_url(); ?>" title="Uniflex" rel="home">
 						<img src="<?php echo get_template_directory_uri() ?>/assets/icon/logo.svg" alt="Uniflex">
 					</a>
 				</div>
@@ -80,7 +80,7 @@ get_header();
 
 					<div class="px-3 px-sm-4 pl-sm-0 d-flex align-items-center position-relative js-like-menu-choice">
 						<a href="#" class="white-text-color" data-target="#likebar">
-							<i class="icon-heart js-like-count position-relative"></i>
+							<i class="bi bi-suit-heart"></i>
 						</a>
 						<div class="js-likebar likebar position-absolute d-none"></div>
 					</div>
