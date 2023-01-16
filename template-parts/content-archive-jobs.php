@@ -64,7 +64,7 @@ function generateExcerpt($string,$length,$end='....')
 										</li>
 									</ul>
 								</div>
-								<button type="submit" class="btn btn__search"><i class="icon-search"></i></button>
+								<button type="submit" class="btn btn__search"><i class="bi bi-search"></i></button>
 							</div>
 						</div>
 					</div>
@@ -78,7 +78,7 @@ function generateExcerpt($string,$length,$end='....')
 					</div>
 										<div class="col-md-6 col-lg-3 accordion">
 							<div class="transparent-orange-bg accordion__inner">
-																<h4 class="job-archive-filter__filter-type js-expand-filter">Vad vill du jobba med?<i class="icon-arrow-down"></i></h4>
+																<h4 class="job-archive-filter__filter-type js-expand-filter">Vad vill du jobba med?<i class="bi bi-chevron-down"></i></h4>
 									<div class="accordion-expandable">
 										<ul class="" data-simplebar data-simplebar-auto-hide="true">
 																						<li>
@@ -429,7 +429,7 @@ function generateExcerpt($string,$length,$end='....')
 						</div>
 										<div class="col-md-6 col-lg-3 accordion">
 							<div class="transparent-orange-bg accordion__inner">
-																<h4 class="job-archive-filter__filter-type js-expand-filter">Var vill du jobba?<i class="icon-arrow-down"></i></h4>
+																<h4 class="job-archive-filter__filter-type js-expand-filter">Var vill du jobba?<i class="bi bi-chevron-down"></i></h4>
 									<div class="accordion-expandable">
 										<ul class="" data-simplebar data-simplebar-auto-hide="true">
 																						<li>
@@ -864,7 +864,7 @@ function generateExcerpt($string,$length,$end='....')
 						</div>
 										<div class="col-md-6 col-lg-3 accordion">
 							<div class="transparent-orange-bg accordion__inner">
-																<h4 class="job-archive-filter__filter-type js-expand-filter">Typ av uppdrag?<i class="icon-arrow-down"></i></h4>
+																<h4 class="job-archive-filter__filter-type js-expand-filter">Typ av uppdrag?<i class="bi bi-chevron-down"></i></h4>
 									<div class="accordion-expandable">
 										<ul class="" data-simplebar data-simplebar-auto-hide="true">
 																						<li>
@@ -885,7 +885,7 @@ function generateExcerpt($string,$length,$end='....')
 						</div>
 										<div class="col-md-6 col-lg-3 accordion">
 							<div class="transparent-orange-bg accordion__inner">
-																<h4 class="job-archive-filter__filter-type js-expand-filter">Heltid eller deltid?<i class="icon-arrow-down"></i></h4>
+																<h4 class="job-archive-filter__filter-type js-expand-filter">Heltid eller deltid?<i class="bi bi-chevron-down"></i></h4>
 									<div class="accordion-expandable">
 										<ul class="" data-simplebar data-simplebar-auto-hide="true">
 																						<li>

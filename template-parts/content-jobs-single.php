@@ -103,36 +103,38 @@ $job_single = json_decode(json_encode($job_single),true);
                                         <strong>60636</strong>
                                     </div> -->
                                 </div>
-							<h3>Tipsa någon om jobbet</h3>
-
-							<div class="single-job-view__definitions">
-								<div class="share-bar">
-                                    <?php if( isset( $job_single[$jobPostId]['facebook'] ) ) : ?>
-                                        <a href="<?php echo esc_url( $job_single[$jobPostId]['facebook'] ) ?? '' ?>"
-                                            target="_blank" title="Dela på Facebook">
+                            <?php if( !empty( $job_single[$jobPostId]['facebook'] ) || !empty( $job_single[$jobPostId]['twitter'] ) || !empty( $job_single[$jobPostId]['linkedin'] ) ) : ?>
+                                <h3>Tipsa någon om jobbet</h3>
+                                
+                                <div class="single-job-view__definitions">
+                                    <div class="share-bar">
+                                        <?php if( !empty( $job_single[$jobPostId]['facebook'] ) ) : ?>
+                                            <a href="<?php echo esc_url( $job_single[$jobPostId]['facebook'] ) ?? '' ?>"
+                                                target="_blank" title="Dela på Facebook">
+                                                <div class="icon-circle">
+                                                    <i class="bi bi-facebook"></i>
+                                                </div>
+                                            </a>
+                                        <?php endif ?>
+                                        <?php if( !empty( $job_single[$jobPostId]['twitter'] ) ) : ?>
+                                        <a href="<?php echo esc_url( $job_single[$jobPostId]['twitter'] ) ?? '' ?>"
+                                            target="_blank" title="Twitter">
                                             <div class="icon-circle">
-                                                <i class="icon icon-facebook"></i>
+                                                <i class="bi bi-twitter"></i>
                                             </div>
                                         </a>
-                                    <?php endif ?>
-                                    <?php if( isset( $job_single[$jobPostId]['twitter'] ) ) : ?>
-									<a href="<?php echo esc_url( $job_single[$jobPostId]['twitter'] ) ?? '' ?>"
-										target="_blank" title="Twitter">
-										<div class="icon-circle">
-											<i class="icon icon-twitter"></i>
-										</div>
-									</a>
-                                    <?php endif ?>
-                                    <?php if( isset( $job_single[$jobPostId]['linkedin'] ) ) : ?>
-                                        <a href="<?php echo esc_url( $job_single[$jobPostId]['linkedin'] ) ?? '' ?>"
-                                            target="_blank" title="Dela på LinkedIn">
-                                            <div class="icon-circle">
-                                                <i class="icon icon-linkedin"></i>
-                                            </div>
-                                        </a>
-                                    <?php endif ?>
-								</div>
-							</div>													
+                                        <?php endif ?>
+                                        <?php if( !empty( $job_single[$jobPostId]['linkedin'] ) ) : ?>
+                                            <a href="<?php echo esc_url( $job_single[$jobPostId]['linkedin'] ) ?? '' ?>"
+                                                target="_blank" title="Dela på LinkedIn">
+                                                <div class="icon-circle">
+                                                    <i class="bi bi-linkedin"></i>
+                                                </div>
+                                            </a>
+                                        <?php endif ?>
+                                    </div>
+                                </div>
+                            <?php endif ?>													
 								<h3>Hur får man jobb?</h3>
 							<div class="youtube-container">
 								<a href="https://www.youtube.com/embed/Prj7xZ4M9gw" data-featherlight="iframe" data-featherlight-iframe-width="960" data-featherlight-iframe-height="540">
