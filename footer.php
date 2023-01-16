@@ -86,22 +86,22 @@
 			<div class="col-12 col-lg-4">
 
 				<a href="https://sv-se.facebook.com/" target="_blank">
-					<i class="icon-facebook"></i>
+					<i class="bi bi-facebook"></i>
 				</a>
 
 
 				<a href="https://www.linkedin.com/" target="_blank">
-					<i class="icon-linkedin"></i>
+					<i class="bi bi-linkedin"></i>
 				</a>
 
 
 				<a href="https://www.instagram.com/" target="_blank">
-					<i class="icon-instagram"></i>
+					<i class="bi bi-instagram"></i>
 				</a>
 
 
 				<a href="https://www.youtube.com/" target="_blank">
-					<i class="icon-youtube-play"></i>
+					<i class="bi bi-youtube"></i>
 				</a>
 
 				<div class="copyright-text">
@@ -113,17 +113,17 @@
 				<div class="footer-logos text-center text-lg-right mt-4 mt-lg-0">
 					<div class="row justify-content-center justify-content-lg-end">
 
-						<img src="<?php echo get_template_directory_uri() ?>/assets/images/iso-9001-300x300.png">
+						<img src="<?php echo get_template_directory_uri() ?>/assets/img/iso-9001-300x300.png">
 
-						<img src="<?php echo get_template_directory_uri() ?>/assets/images/iso-14001-300x300.png">
+						<img src="<?php echo get_template_directory_uri() ?>/assets/img/iso-14001-300x300.png">
 
-						<img src="<?php echo get_template_directory_uri() ?>/assets/images/iso-45001-png-300x300.png">
+						<img src="<?php echo get_template_directory_uri() ?>/assets/img/iso-45001-png-300x300.png">
 
-						<img src="<?php echo get_template_directory_uri() ?>/assets/images/bemanningnyy.png">
+						<img src="<?php echo get_template_directory_uri() ?>/assets/img/bemanningnyy.png">
 
-						<img src="<?php echo get_template_directory_uri() ?>/assets/images/ar2.png">
+						<img src="<?php echo get_template_directory_uri() ?>/assets/img/ar2.png">
 
-						<img src="<?php echo get_template_directory_uri() ?>/assets/images/barncancer-png-300x300.png">
+						<img src="<?php echo get_template_directory_uri() ?>/assets/img/barncancer-png-300x300.png">
 					</div>
 				</div>
 			</div>

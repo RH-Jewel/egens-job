@@ -13382,9 +13382,9 @@ ul#menu-huvudmeny {
     color: #ff7200;
 }
 
-.component:not(.no-padding) {
-    padding: 60px 0;
-}
+/* .component:not(.no-padding) {
+    padding: 200px 0;
+} */
 
 ul#menu-main-menu {
     margin: 0;

@@ -191,7 +191,7 @@ class Elementor_Our_Office_Widget extends \Elementor\Widget_Base
                                 <div class="entry-content">
                                     <h2 class="h2--xl" style="text-align: center"><?php echo (!empty($settings['egens_our_office_heading_title']) ? esc_html__($settings['egens_our_office_heading_title'], 'egenslab') : '') ?></h2>
                                     <p class="font-size-large" style="text-align: center"><?php echo (!empty($settings['egens_our_office_heading_desc']) ? wp_kses($settings['egens_our_office_heading_desc'], wp_kses_allowed_html('post')) : '') ?></p>
-                                    <div class="custom-select position-relative is-hidden"> <span class="active-li js-active-li"> <span class="js-current-office"><?php echo (!empty($settings['egens_our_office_current_office']) ? esc_html__($settings['egens_our_office_current_office'], 'egenslab') : '') ?></span> <i class="icon-arrow-down"></i> </span>
+                                    <div class="custom-select position-relative is-hidden"> <span class="active-li js-active-li"> <span class="js-current-office"><?php echo (!empty($settings['egens_our_office_current_office']) ? esc_html__($settings['egens_our_office_current_office'], 'egenslab') : '') ?></span> <i class="bi bi-chevron-down"></i> </span>
                                         <ul>
                                             <?php foreach ($data as $item) : ?>
                                                 <li>
@@ -220,7 +220,7 @@ class Elementor_Our_Office_Widget extends \Elementor\Widget_Base
                                     <div class="custom-select position-relative is-hidden">
                                         <span class="active-li js-active-li">
                                             <span class="js-current-office"><?php echo (!empty($settings['egens_our_office_current_office']) ? esc_html__($settings['egens_our_office_current_office'], 'egenslab') : '') ?></span>
-                                            <i class="icon-arrow-down"></i>
+                                            <i class="bi bi-chevron-down"></i>
                                         </span>
                                         <ul>
                                             <?php foreach ($data as $item) : ?>
