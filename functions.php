@@ -221,6 +221,7 @@ function egenslab_scripts()
 	wp_style_add_data('egenslab-style', 'rtl', 'replace');
 
 
+	wp_enqueue_script('egenslab-custom', get_template_directory_uri() . '/assets/js/custom.js', array('jquery'), _S_VERSION, true);
 	wp_enqueue_script('egenslab-navigation', get_template_directory_uri() . '/assets/js/app.min.js', array('jquery'), _S_VERSION, true);
 	wp_enqueue_script('egenslab-magnigfic-popup', get_template_directory_uri() . '/assets/js/jquery.magnific-popup.min.js', array('jquery'), _S_VERSION, true);
 	wp_enqueue_script('egenslab-slick-js', get_template_directory_uri() . '/assets/js/slick.js', array('jquery'), _S_VERSION, true);
