@@ -1,4 +1,5 @@
 @import url(//db.onlinewebfonts.com/c/0545b648e6ea2b14311e2a15952a9b0c?family=Franklin+Gothic);
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css");
 
 @font-face {
     font-family: fontello1;
@@ -13383,4 +13384,16 @@ ul#menu-huvudmeny {
 
 .component:not(.no-padding) {
     padding: 60px 0;
+}
+
+ul#menu-main-menu {
+    margin: 0;
+}
+
+.home header.entry-header {
+    display: none;
+}
+
+.home .entry-content {
+    margin: 0;
 }

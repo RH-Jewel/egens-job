@@ -115,7 +115,7 @@ class Elementor_Hero_Widget extends \Elementor\Widget_Base
                                 <p class="font-size-large"><?php echo wp_kses($settings['egens_hero_desc'], wp_kses_allowed_html('post')) ?></p>
                             <?php endif ?>
                             <form role="search" method="get" class="search-form" action="https://www.uniflex.se/jobb/">
-                                <input type="search" name="q" placeholder="Sök på ort, stad eller yrke"> <button type="submit"> <i class="icon-search"></i> <span> <b>257</b> jobb </span> </button>
+                                <input type="search" name="q" placeholder="Sök på ort, stad eller yrke"> <button type="submit"> <i class="bi bi-search"></i> <span> <b>257</b> jobb </span> </button>
                             </form>
                         </div>
                     </div>

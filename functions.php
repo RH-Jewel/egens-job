@@ -213,11 +213,11 @@ function egenslab_scripts()
 	wp_enqueue_style('egns-slick', get_template_directory_uri() . '/assets/css/slick.css', array(), _S_VERSION, 'all');
 	wp_enqueue_style('egns-magnific', get_template_directory_uri() . '/assets/css/magnific-popup.min.css', array(), _S_VERSION, 'all');
 	wp_enqueue_style('egns-classic', get_template_directory_uri() . '/assets/css/classic-themes.min.css', array(), _S_VERSION, 'all');
-	wp_enqueue_style('egns-style', get_template_directory_uri() . '/assets/css/style.css', array(), _S_VERSION, 'all');
+	wp_enqueue_style('egns-style', get_template_directory_uri() . '/assets/css/style.css?v=4323', array(), _S_VERSION, 'all');
 	wp_enqueue_style('egns-style-min', get_template_directory_uri() . '/assets/css/style.min.css', array(), _S_VERSION, 'all');
 	wp_enqueue_style('egns-slick-css', get_template_directory_uri() . '/assets/css/slick-theme.css', array(), _S_VERSION, 'all');
 
-	wp_enqueue_style('egenslab-style', get_stylesheet_uri(), array(), _S_VERSION);
+	wp_enqueue_style('egenslab-style', get_stylesheet_uri() . '?v=434', array(), _S_VERSION);
 	wp_style_add_data('egenslab-style', 'rtl', 'replace');
 
 
@@ -268,10 +268,11 @@ require get_template_directory() . '/inc/theme-option/theme-options.php';
 require get_template_directory() . '/inc/elementor.php';
 
 
-function add_query_vars_filter( $vars ){
+function add_query_vars_filter($vars)
+{
 	$vars[] = "slug";
 	$vars[] = "job_id";
 	return $vars;
-  }
-  
-  add_filter( 'query_vars', 'add_query_vars_filter' );
+}
+
+add_filter('query_vars', 'add_query_vars_filter');
