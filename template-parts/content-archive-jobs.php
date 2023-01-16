@@ -25,9 +25,7 @@ if ($err) {
 }
 
 $response = json_decode( $response );
-// echo "<pre>";
-// print_r( $response );
-// exit();
+
 function generateExcerpt($string,$length,$end='....')
 {
     $string = strip_tags($string);
@@ -42,6 +40,8 @@ function generateExcerpt($string,$length,$end='....')
     }
     return $string;
 }
+
+
 ?>
 
 <section class="job-archive" data-page="1">
@@ -71,24 +71,24 @@ function generateExcerpt($string,$length,$end='....')
                 <div class="row">
                     <div class="col-xl-2 my-auto">
                         <div class="align-middle text-xl-center">
-                            <img src="<?php echo $jobs->logo ?? '' ?>" alt="Uniflex Bemanning" />
+                            <img src="<?php echo $jobs->logo ?? '' ?>" alt="<?php echo $jobs->logo ?? '' ?>" />
                         </div>
                     </div>
                     <div class="col-xl-8">
                         <div class="job-post__date">
                             <?php echo date("Y-m-d", strtotime($jobs->created)) ?>		
                         </div>
-                        <a href="<?php echo home_url( $wp->request ). '?jobPostId='.$jobs->jobPostId.'&slug='.strtolower(preg_replace('/[^A-Za-z0-9-]+/', '-', $jobs->title)) ?>" class="job-post__link">
+                        <a href="<?php echo home_url( $wp->request ). '?job_id='.$jobs->jobPostId.'&slug='.strtolower(preg_replace('/[^A-Za-z0-9-]+/', '-', $jobs->title)) ?>" class="job-post__link">
                             <?php if( !empty( $jobs->title ) ) : ?>
                                 <h2><?php echo $jobs->title ?></h2>
                             <?php endif ?>
                         </a>
 
-                        <div class="job-post__specification">
+                        <!-- <div class="job-post__specification">
                             <a href="index9456.html?tax_municipality[]=stockholm">Stockholm</a>
                             <span class="job-post__delimiter">|</span>						
                             <a href="index2316.html?tax_timetype[]=deltid">Deltid</a>
-                        </div>
+                        </div> -->
                         <div class="job-post__description">
                             <div class="d-none d-xl-block">
                                 <p>
@@ -98,19 +98,19 @@ function generateExcerpt($string,$length,$end='....')
                         </div>
                     </div>
                     <div class="col-xl-2 d-flex flex-column justify-content-center align-content-start">
-                        <a href="extrajobba-i-dagabs-nya-logistikcenter-i-balsta-61772/index.html" class="btn btn__submit">Läs mer och ansök</a>
-                        <button class="js-save-job btn__save-job" data-save-job="Spara jobb" data-saved-job="Sparat jobb" data-id="53295"><i class="icon-mark-favourite"></i><span>Spara jobb</span></a>
+                        <a href="<?php echo home_url( $wp->request ). '?job_id='.$jobs->jobPostId.'&slug='.strtolower(preg_replace('/[^A-Za-z0-9-]+/', '-', $jobs->title)) ?>" class="btn btn__submit">Läs mer och ansök</a>
+                        <!-- <button class="js-save-job btn__save-job" data-save-job="Spara jobb" data-saved-job="Sparat jobb" data-id="53295"><i class="icon-mark-favourite"></i><span>Spara jobb</span></a> -->
                     </div>
                 </div>
             </div>
         <?php endforeach ?>
-        <div class="pagination pagination-footer text-center" data-pages="Array">
+        <!-- <div class="pagination pagination-footer text-center" data-pages="Array">
             <span aria-current="page" class="page-numbers current">1</span>
             <a class="page-numbers" href="page/2/index.html">2</a>
             <a class="page-numbers" href="page/3/index.html">3</a>
             <span class="page-numbers dots">&hellip;</span>
             <a class="page-numbers" href="page/19/index.html">19</a>
             <a class="next page-numbers" href="page/2/index.html">Nästa sida</a>
-        </div>
+        </div> -->
     </div>
 </section>
