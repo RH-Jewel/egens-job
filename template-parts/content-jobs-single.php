@@ -31,7 +31,7 @@ if ($err) {
 $response = json_decode( $response );
 
 $job_single = $response->data;
-$job_single = (array) $job_single;
+$job_single = json_decode(json_encode($job_single),true);
 
 ?>
 
@@ -41,9 +41,9 @@ $job_single = (array) $job_single;
 		<div class="container">
 			<article class="entry-content text-center text-lg-left no-bottom-border">
 				<div class="single-job-view__date">
-                    <?php echo date("Y-m-d", strtotime($job_single[$jobPostId]->created)) ?>					
+                    <?php echo date("Y-m-d", strtotime($job_single[$jobPostId]['created'])) ?>					
                 </div>
-				<h1><?php echo $job_single[$jobPostId]->title ?? '' ?></h1>
+				<h1><?php echo $job_single[$jobPostId]['title'] ?? '' ?></h1>
 
 				<div class="single-job-view__button-bar d-flex d-md-block">
 					<!-- <button class="js-save-job btn__save-job" data-id="52932">
@@ -62,17 +62,17 @@ $job_single = (array) $job_single;
 				<div class="row">
 					<div class="col-xl-8 single-job-view__content">
 						<div class="entry-content mx-auto">
-                            <?php echo $job_single[$jobPostId]->body ?? '' ?>
+                            <?php echo $job_single[$jobPostId]['body'] ?? '' ?>
 						</div>
 					</div>
 					<aside class="col-xl-4 single-job-view__sidebar">
 						<div class="entry-content">
                             <div class="single-job-view__company-logo">
-                                <img src="<?php echo $job_single[$jobPostId]->logo ?? '' ?>" alt="<?php echo $job_single[$jobPostId]->logo ?? '' ?>" />
+                                <img src="<?php echo $job_single[$jobPostId]['logo'] ?? '' ?>" alt="<?php echo $job_single[$jobPostId]['logo'] ?? '' ?>" />
                             </div>
 							
 							<div class="single-job-view__submit">
-								<a href="<?php echo $job_single[$jobPostId]->applyUrl ?? '' ?>" class="btn btn__submit" target="_blank" rel="noopener noreferrer"> Ansök här </a>
+								<a href="<?php echo $job_single[$jobPostId]['applyUrl'] ?? '' ?>" class="btn btn__submit" target="_blank" rel="noopener noreferrer"> Ansök här </a>
 							</div>
 
 							<h3>Snabbfakta</h3>
@@ -80,15 +80,15 @@ $job_single = (array) $job_single;
 							<div class="single-job-view__definitions">																			
                                 <div class="single-job-view__definition">
                                         <span>Plats:</span>
-                                            <a href=""><?php echo $job_single[$jobPostId]->city ?? ''  ?></a>
+                                            <a href=""><?php echo $job_single[$jobPostId]['city'] ?? ''  ?></a>
                                         </div>
                                     <div class="single-job-view__definition">
                                         <span>Omfattning:</span>
-                                            <a href=""><?php echo $job_single[$jobPostId]->position ?? '' ?></a>
+                                            <a href=""><?php echo $job_single[$jobPostId]['position'] ?? '' ?></a>
                                     </div>
                                     <div class="single-job-view__definition">
                                         <span>Uppdragstyp:</span>
-                                            <a href="../indexbb09.html?tax_type_of_employment[]=tillsvidareanstallning"><?php echo $job_single[$jobPostId]->positionType ?? '' ?></a>
+                                            <a href="../indexbb09.html?tax_type_of_employment[]=tillsvidareanstallning"><?php echo $job_single[$jobPostId]['positionType'] ?? '' ?></a>
                                     </div>
                                     <!-- <div class="single-job-view__definition">
                                         <span>Befattning:</span>
@@ -107,24 +107,24 @@ $job_single = (array) $job_single;
 
 							<div class="single-job-view__definitions">
 								<div class="share-bar">
-                                    <?php if( isset( $job_single[$jobPostId]->facebook ) ) : ?>
-                                        <a href="<?php echo esc_url( $job_single[$jobPostId]->facebook ) ?? '' ?>"
+                                    <?php if( isset( $job_single[$jobPostId]['facebook'] ) ) : ?>
+                                        <a href="<?php echo esc_url( $job_single[$jobPostId]['facebook'] ) ?? '' ?>"
                                             target="_blank" title="Dela på Facebook">
                                             <div class="icon-circle">
                                                 <i class="icon icon-facebook"></i>
                                             </div>
                                         </a>
                                     <?php endif ?>
-                                    <?php if( isset( $job_single[$jobPostId]->twitter ) ) : ?>
-									<a href="<?php echo esc_url( $job_single[$jobPostId]->twitter ) ?? '' ?>"
+                                    <?php if( isset( $job_single[$jobPostId]['twitter'] ) ) : ?>
+									<a href="<?php echo esc_url( $job_single[$jobPostId]['twitter'] ) ?? '' ?>"
 										target="_blank" title="Twitter">
 										<div class="icon-circle">
 											<i class="icon icon-twitter"></i>
 										</div>
 									</a>
                                     <?php endif ?>
-                                    <?php if( isset( $job_single[$jobPostId]->linkedin ) ) : ?>
-                                        <a href="<?php echo esc_url( $job_single[$jobPostId]->linkedin ) ?? '' ?>"
+                                    <?php if( isset( $job_single[$jobPostId]['linkedin'] ) ) : ?>
+                                        <a href="<?php echo esc_url( $job_single[$jobPostId]['linkedin'] ) ?? '' ?>"
                                             target="_blank" title="Dela på LinkedIn">
                                             <div class="icon-circle">
                                                 <i class="icon icon-linkedin"></i>
