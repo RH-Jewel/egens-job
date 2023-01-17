@@ -12161,7 +12161,7 @@ h5,
 .component-faq .questions__header--question i,
 .component-faq .questions__item--question i {
     font-size: 7px;
-    font-size: .4375rem;
+    font-size: .8375rem;
     -webkit-transition: .2s all;
     transition: .2s all;
     margin-left: 10px

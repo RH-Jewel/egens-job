@@ -86,7 +86,7 @@ if (!is_single()) : ?>
             <div class="d-xl-none blog-posts-select">
                 <div class="custom-select position-relative is-hidden entry-content"> 
                     <span class="active-li js-active-li"> 
-                        <span class="js-current-office"> Alla kategorier </span> <i class="icon-arrow-down"></i> 
+                        <span class="js-current-office"> Alla kategorier </span> <i class="bi bi-chevron-down"></i> 
                     </span>
                     <ul>
                         <?php $blog_cat = get_terms('category'); ?>
