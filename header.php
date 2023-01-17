@@ -59,7 +59,7 @@ $options = get_option('egns_theme_options');
 
 				<?php if (!empty($options['header_logo']['url'])) : ?>
 					<div class="px-3 site-logo px-sm-4 d-flex align-items-center primary-color-bg">
-						<a href="<?php site_url(); ?>" title="Uniflex" rel="home">
+						<a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="Uniflex" rel="home">
 							<img src="<?php echo $options['header_logo']['url'] ?>" alt="Uniflex">
 						</a>
 					</div>
