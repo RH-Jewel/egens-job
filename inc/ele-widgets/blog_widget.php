@@ -117,7 +117,7 @@ class Elementor_Blog_Widget extends \Elementor\Widget_Base
                                         <div class="post--meta">
                                             <?php echo get_the_date('d M, Y'); ?> • <?php echo esc_html(get_the_author()); ?> </div>
                                         <div class="entry-content">
-                                            <a href="../nyheter/veckans-medarbetare-246/index.html">
+                                            <a href="<?php the_permalink() ?>">
                                                 <h3 class="black-text-color"><?php the_title() ?></h3>
                                             </a>
                                             <p>
