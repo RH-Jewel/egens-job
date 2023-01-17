@@ -13401,14 +13401,3 @@ ul#menu-main-menu {
     font-size: 20px;
 }
 
-/* added css for language image */
-.fi-gb-fis{
-    height: 100px;
-    width: 100px;
-    background-size: cover;
-}
-.fi-se-fis{
-    height: 100px;
-    width: 100px;
-    background-size: cover;
-}
