@@ -21,3 +21,18 @@ Underscores is distributed under the terms of the GNU GPL v2 or later.
 Normalizing styles have been helped along thanks to the fine work of
 Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
 */
+
+
+.widget-title {
+    margin-bottom: 28px;
+}
+
+#menu-sidfotsmeny li {
+    margin-bottom: 13px;
+}
+
+#menu-sidfotsmeny li a {
+    font-size: .875rem;
+    text-transform: none;
+    color: rgba(255, 255, 255, 0.8);
+}
