@@ -215,12 +215,14 @@ class Elementor_Whistleblower_Widget extends \Elementor\Widget_Base
                             </div>
                             <div class="row">
                                 <div class="QW-language-page__flags-container">
-                                    <div class="QW-language-page__flag-container"><a href="<?php echo (!empty($settings['egens_whistleblower_language_one_link']['url']) ? esc_url($settings['egens_whistleblower_language_one_link']['url']) : '') ?>" __internal_preventDefault_onclick class="QW-language-page__inner-flag-container"><span class="QW-language-page__name my-1"><?php echo (!empty($settings['egens_whistleblower_language_one']) ? esc_html__($settings['egens_whistleblower_language_one'], 'egenslab') : '') ?></span>
+                                    <div class="QW-language-page__flag-container"><a href="<?php echo (!empty($settings['egens_whistleblower_language_one_link']['url']) ? esc_url($settings['egens_whistleblower_language_one_link']['url']) : '') ?>" __internal_preventDefault_onclick class="QW-language-page__inner-flag-container">
                                             <div class="QW-language-page__flag fib fi-gb-fis" style="background-image: url(<?php echo (!empty($settings['egens_whistleblower_language_one_image']['url']) ? esc_url($settings['egens_whistleblower_language_one_image']['url']) : '') ?>);"></div>
+                                            <span class="QW-language-page__name my-1"><?php echo (!empty($settings['egens_whistleblower_language_one']) ? esc_html__($settings['egens_whistleblower_language_one'], 'egenslab') : '') ?></span>
                                         </a>
                                     </div>
-                                    <div class="QW-language-page__flag-container"><a href="<?php echo (!empty($settings['egens_whistleblower_language_two_link']['url']) ? esc_url($settings['egens_whistleblower_language_two_link']['url']) : '') ?>" __internal_preventDefault_onclick class="QW-language-page__inner-flag-container"><span class="QW-language-page__name my-1"><?php echo (!empty($settings['egens_whistleblower_language_two']) ? esc_html__($settings['egens_whistleblower_language_two'], 'egenslab') : '') ?></span>
+                                    <div class="QW-language-page__flag-container"><a href="<?php echo (!empty($settings['egens_whistleblower_language_two_link']['url']) ? esc_url($settings['egens_whistleblower_language_two_link']['url']) : '') ?>" __internal_preventDefault_onclick class="QW-language-page__inner-flag-container">
                                             <div class="QW-language-page__flag fib fi-se-fis" style="background-image: url(<?php echo (!empty($settings['egens_whistleblower_language_two_image']['url']) ? esc_url($settings['egens_whistleblower_language_two_image']['url']) : '') ?>);"></div>
+                                            <span class="QW-language-page__name my-1"><?php echo (!empty($settings['egens_whistleblower_language_two']) ? esc_html__($settings['egens_whistleblower_language_two'], 'egenslab') : '') ?></span>
                                         </a>
                                     </div>
                                 </div>
