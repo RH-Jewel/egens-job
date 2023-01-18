@@ -214,10 +214,10 @@ class Elementor_Our_Office_Widget extends \Elementor\Widget_Base
                 <div class="container">
                     <div class="row">
                         <div class="col-md-7 col-lg-9">
-                            <div class="entry-content">
+                            <div class="entry-content single">
                                 <h1 class="h1--xl"><?php echo (!empty($settings['egens_our_office_heading_title']) ? esc_html__($settings['egens_our_office_heading_title'], 'egenslab') : '') ?></h1>
                                 <div class="entry-content">
-                                    <div class="custom-select position-relative is-hidden">
+                                    <div class="single custom-select position-relative is-hidden">
                                         <span class="active-li js-active-li">
                                             <span class="js-current-office"><?php echo (!empty($settings['egens_our_office_current_office']) ? esc_html__($settings['egens_our_office_current_office'], 'egenslab') : '') ?></span>
                                             <i class="bi bi-chevron-down"></i>

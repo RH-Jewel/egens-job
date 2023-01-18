@@ -58,11 +58,11 @@ $jobTitleArray = array_unique(array_column($jobArray, 'title','jobPostId'));
 						</div>
 					</div>
 					<div class="col-lg-3 js-save-search-container save-search-container">
-						<a href="#" class="btn btn--submit js-save-search">Spara din sökning<i class="icon-heart"></i></a>
+						<a href="#" class="btn btn--submit js-save-search">Spara din sökning<i class="bi bi-suit-heart"></i></a>
 					</div>
 					<div class="d-flex d-lg-none col-12 js-toggle-filters toggle-filters">
 						<div class="d-flex justify-content-between">
-							<button class="js-toggle-filters-btn" data-show-template="Visa filterval" data-hide-template="Dölj filterval"><span>Visa filterval</span><i class="icon-filter"></i></button>
+							<button class="js-toggle-filters-btn" data-show-template="Visa filterval" data-hide-template="Dölj filterval"><span>Visa filterval</span><i class="bi bi-filter"></i></button>
 						</div>
 					</div>
 						<div class="col-md-6 col-lg-3 accordion">

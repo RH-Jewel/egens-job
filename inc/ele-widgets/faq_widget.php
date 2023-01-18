@@ -120,7 +120,7 @@ class Elementor_Faq_Widget extends \Elementor\Widget_Base
                             <?php foreach ($data as $item) : ?>
                                 <div class="questions__item">
                                     <div class="questions__item--question d-flex justify-content-between align-items-center js-toggle-question">
-                                    <?php echo (!empty($item['egens_faq_question']) ? esc_html__($item['egens_faq_question'], 'egenslab') : '') ?> <i class="icon-arrow-down"></i>
+                                    <?php echo (!empty($item['egens_faq_question']) ? esc_html__($item['egens_faq_question'], 'egenslab') : '') ?> <i class="bi bi-chevron-down"></i>
                                     </div>
                                     <div class="questions__item--answer">
                                         <div class="entry-content">

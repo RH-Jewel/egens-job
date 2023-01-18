@@ -14,6 +14,11 @@
  */
 
 get_header();
+
+
+// Get theme options value
+$options = get_option('egns_theme_options');
+
 ?>
 
 <!DOCTYPE html>
@@ -51,11 +56,14 @@ get_header();
 	<header class="site-header">
 		<div class="row h-100 no-gutters">
 			<div class="d-flex col justify-content-between h-100">
-				<div class="px-3 site-logo px-sm-4 d-flex align-items-center primary-color-bg">
-					<a href="<?php site_url(); ?>" title="Uniflex" rel="home">
-						<img src="<?php echo get_template_directory_uri() ?>/assets/icon/logo.svg" alt="Uniflex">
-					</a>
-				</div>
+
+				<?php if (!empty($options['header_logo']['url'])) : ?>
+					<div class="px-3 site-logo px-sm-4 d-flex align-items-center primary-color-bg">
+						<a href="<?php echo esc_url(home_url('/')); ?>" title="Uniflex" rel="home">
+							<img src="<?php echo $options['header_logo']['url'] ?>" alt="Uniflex">
+						</a>
+					</div>
+				<?php endif; ?>
 
 				<div class="flex-row main-nav-container d-flex primary-color-bg align-items-center justify-content-end">
 					<nav class="px-4 d-none d-xl-flex site-header__navigation">
@@ -80,18 +88,22 @@ get_header();
 
 					<div class="px-3 px-sm-4 pl-sm-0 d-flex align-items-center position-relative js-like-menu-choice">
 						<a href="#" class="white-text-color" data-target="#likebar">
-							<i class="bi bi-suit-heart"></i>
+							<i class="bi bi-suit-heart js-like-count position-relative">
+								<i class="circle-indicator">0</i>
+							</i>
 						</a>
 						<div class="js-likebar likebar position-absolute d-none"></div>
 					</div>
 
-					<div class="d-none d-xl-flex primary-color-bg h-100 align-items-center white-text-color">
-						<a href="registrera-cv.html" class="px-4 white-text-color d-flex h-100 w-100 align-items-center justify-content-center login-btn">
-							Registrera CV </a>
-					</div>
+					<?php if (!empty($options['register_btn'])) : ?>
+						<div class="d-none d-xl-flex primary-color-bg h-100 align-items-center white-text-color">
+							<a href="<?php echo esc_url($options['register_btn_link']) ?>" class="px-4 white-text-color d-flex h-100 w-100 align-items-center justify-content-center login-btn">
+								<?php echo $options['register_btn'] ?></a>
+						</div>
+					<?php endif; ?>
 
 					<div class="d-flex align-items-center h-100 hamburger-container">
-						<span class="phone-number">Ring oss på 08-555 368 00</span>
+						<span class="phone-number"><?php echo $options['phn_number'] ?></span>
 						<a class="px-4 hamburger d-flex align-items-center ml-md-auto js-toggle-navbar" aria-expanded="false" aria-label="Toggle navigation">
 							<span class="hamburger__icon d-block"></span>
 						</a>
@@ -109,6 +121,7 @@ get_header();
 				'container_class' => 'off-canvas-menu w-100',
 				'link_before'     => '',
 				'link_after'      => '',
+				'after'			  => '',
 				'container_id'    => 'menu-off-canvasmeny',
 				'menu_class'      => 'menu-item',
 				'fallback_cb'     => '',
@@ -118,8 +131,10 @@ get_header();
 		);
 
 		?>
-		<div class="d-flex d-xl-none flex-column">
-			<a href="registrera-cv.html" class="white-text-color menu-btn">
-				Registrera CV </a>
-		</div>
+		<?php if (!empty($options['register_btn'])) : ?>
+			<div class="d-flex d-xl-none flex-column">
+				<a href="<?php echo esc_url($options['register_btn_link']) ?>" class="white-text-color menu-btn">
+					<?php echo $options['register_btn'] ?> </a>
+			</div>
+		<?php endif; ?>
 	</div>

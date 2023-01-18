@@ -93,7 +93,7 @@ class Elementor_Hero_Two_Widget extends \Elementor\Widget_Base
                 <div class="container container-lg">
                     <div class="row">
                         <div class="col-12 md-margin no-margin text-center small-column text-xl-left">
-                            <h1><?php echo (!empty($settings['egens_hero_two_title']) ? wp_kses($settings['egens_hero_two_title'],wp_kses_allowed_html('post')) : '') ?></h1>
+                            <h1 class="heading-two"><?php echo (!empty($settings['egens_hero_two_title']) ? wp_kses($settings['egens_hero_two_title'], wp_kses_allowed_html('post')) : '') ?></h1>
                             <div class="entry-content">
                                 <?php if (!empty($settings['egens_hero_two_desc'])) : ?>
                                     <p><?php echo wp_kses($settings['egens_hero_two_desc'], wp_kses_allowed_html('post')) ?></p>

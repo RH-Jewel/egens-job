@@ -186,7 +186,8 @@ class Elementor_Feature_Widget extends \Elementor\Widget_Base
                                 <img width="400" height="470" src="<?php echo (!empty($item['egens_feature_employee_image']['url']) ? esc_url($item['egens_feature_employee_image']['url']) : '') ?>" class="employee--image" alt="Uniflex Bemanning" decoding="async" loading="lazy">
                                 <div class="employee-content">
                                     <div class="employee-content--name w-100">
-                                        <a class="popup-youtube" href="<?php echo (!empty($item['egens_feature_employee_video_link']['url']) ? esc_url($item['egens_feature_employee_video_link']['url']) : '') ?>">
+
+                                        <a href="<?php echo (!empty($item['egens_feature_employee_video_link']['url']) ? esc_url($item['egens_feature_employee_video_link']['url']) : '') ?>" data-featherlight="iframe" data-featherlight-iframe-width="960" data-featherlight-iframe-height="540">
                                             <div class="d-flex justify-content-start align-items-center"> <span class="name white-text-color"><?php echo (!empty($item['egens_feature_employee_name']) ? esc_html__($item['egens_feature_employee_name'], 'egenslab') : '') ?></span>
                                                 <p>
                                                     <svg width="18" height="25" viewBox="0 0 18 25" fill="none" xmlns="http://www.w3.org/2000/svg">

@@ -211,7 +211,6 @@ add_action('widgets_init', 'egenslab_widgets_init');
 function egenslab_scripts()
 {
 	wp_enqueue_style('egns-slick', get_template_directory_uri() . '/assets/css/slick.css', array(), _S_VERSION, 'all');
-	wp_enqueue_style('egns-magnific', get_template_directory_uri() . '/assets/css/magnific-popup.min.css', array(), _S_VERSION, 'all');
 	wp_enqueue_style('egns-classic', get_template_directory_uri() . '/assets/css/classic-themes.min.css', array(), _S_VERSION, 'all');
 	wp_enqueue_style('egns-style', get_template_directory_uri() . '/assets/css/style.css?v=4323', array(), _S_VERSION, 'all');
 	wp_enqueue_style('egns-style-min', get_template_directory_uri() . '/assets/css/style.min.css', array(), _S_VERSION, 'all');
@@ -223,7 +222,6 @@ function egenslab_scripts()
 
 	wp_enqueue_script('egenslab-custom', get_template_directory_uri() . '/assets/js/custom.js', array('jquery'), _S_VERSION, true);
 	wp_enqueue_script('egenslab-navigation', get_template_directory_uri() . '/assets/js/app.min.js', array('jquery'), _S_VERSION, true);
-	wp_enqueue_script('egenslab-magnigfic-popup', get_template_directory_uri() . '/assets/js/jquery.magnific-popup.min.js', array('jquery'), _S_VERSION, true);
 	wp_enqueue_script('egenslab-slick-js', get_template_directory_uri() . '/assets/js/slick.js', array('jquery'), _S_VERSION, true);
 
 
@@ -232,6 +230,16 @@ function egenslab_scripts()
 	}
 }
 add_action('wp_enqueue_scripts', 'egenslab_scripts');
+
+
+if (!function_exists('your_prefix_enqueue_fa5')) {
+	function your_prefix_enqueue_fa5()
+	{
+		wp_enqueue_style('fa5', 'https://use.fontawesome.com/releases/v5.13.0/css/all.css', array(), '5.13.0', 'all');
+		wp_enqueue_style('fa5-v4-shims', 'https://use.fontawesome.com/releases/v5.13.0/css/v4-shims.css', array(), '5.13.0', 'all');
+	}
+	add_action('wp_enqueue_scripts', 'your_prefix_enqueue_fa5');
+}
 
 /**
  * Implement the Custom Header feature.

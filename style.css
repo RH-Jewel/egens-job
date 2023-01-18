@@ -21,3 +21,128 @@ Underscores is distributed under the terms of the GNU GPL v2 or later.
 Normalizing styles have been helped along thanks to the fine work of
 Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
 */
+
+/* added css for language image */
+
+.entry-content h1.heading-two {
+    font-size: 7.75rem;
+}
+
+@media (max-width: 1399px) {
+    .entry-content h1.heading-two {
+        font-size: 5.75rem;
+    }
+}
+
+@media (min-width: 992px) {
+    .component-faq .bg-image-wrapper {
+        top: 5%;
+    }
+}
+
+@media (max-width: 767.98px) {
+    .entry-content h1.heading-two {
+        font-size: 3rem;
+    }
+
+    .btn.btn--small {
+        margin: 20px 10px;
+        line-height: 48px;
+    }
+}
+
+.posts-filter-menu ul li::before {
+    display: none;
+}
+
+.entry-content.single h1 {
+    font-size: 6rem;
+}
+
+@media (max-width: 767.98px) {
+    .entry-content.single h1 {
+        font-size: 3rem;
+    }
+}
+
+.component-blurbs.default-bg {
+    padding-top: 60px;
+}
+
+.slick-vertical .slick-slide {
+    border: none !important;
+}
+
+.single.custom-select .active-li.js-active-li {
+    background-color: #fff1e5;
+    color: #000;
+}
+
+.QW-card.QW-language-page {
+    text-align: center;
+}
+
+.QW-language-page__flags-container {
+    margin: 0 auto;
+}
+
+.QW-language-page__section svg {
+    width: 200px;
+    height: 133px;
+}
+
+.QW-start-options__image .st1,
+.QW-language-page .st1 {
+    fill: #ff7200;
+}
+
+.QW-language-page__section h1 {
+    text-align: center;
+    margin-bottom: 1em;
+    color: #212529;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-style: normal;
+    word-break: break-word;
+    font-size: 2.6em;
+}
+
+.QW-language-page__flags-container {
+    display: flex;
+    align-items: center;
+    gap: 100px;
+}
+
+.fi-gb-fis {
+    height: 100px;
+    width: 100px;
+    background-size: cover;
+}
+
+.fi-se-fis {
+    height: 100px;
+    width: 100px;
+    background-size: cover;
+}
+
+
+/* Widget css  */
+.widget-title {
+    margin-bottom: 28px;
+    font-size: 1.125rem;
+    text-transform: uppercase;
+}
+
+#menu-sidfotsmeny li {
+    margin-bottom: 13px;
+}
+
+#menu-sidfotsmeny li a {
+    font-size: .875rem;
+    text-transform: none;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+#menu-sidfotsmeny li ul li {
+    width: unset;
+}
