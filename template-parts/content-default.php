@@ -14,64 +14,68 @@ $query = new \WP_Query(
  */
 if (is_single()) : ?>
 
-    <article class="entry-content">
-        <div class="col-12">
-            <div class="post--meta text-center">
-                <?php echo get_the_date('d M, Y'); ?> | <?php echo esc_html(get_the_author()); ?>
-            </div>
-            <h1 class="text-center"><?php the_title() ?></h1>
+    <div class="single-post-container">
+        <div class="container">
+            <article class="entry-content">
+                <div class="col-12">
+                    <div class="post--meta text-center">
+                        <?php echo get_the_date('d M, Y'); ?> | <?php echo esc_html(get_the_author()); ?>
+                    </div>
+                    <h1 class="text-center"><?php the_title() ?></h1>
 
-            <div class="text-center primary-color-text-color d-flex justify-content-center align-items-center share-page">
-                <?php echo esc_html__('Dela sida', 'egenslab') ?>
-                <div class="icon-circle">
-                    <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.uniflex.se%2Fnyheter%2Fveckans-medarbetare-244%2F" target="_blank">
-                        <i class="icon-facebook"></i>
-                    </a>
+                    <div class="text-center primary-color-text-color d-flex justify-content-center align-items-center share-page">
+                        <?php echo esc_html__('Dela sida', 'egenslab') ?>
+                        <div class="icon-circle">
+                            <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.uniflex.se%2Fnyheter%2Fveckans-medarbetare-244%2F" target="_blank">
+                                <i class="bi bi-facebook"></i>
+                            </a>
+                        </div>
+                        <div class="icon-circle">
+                            <a href="https://twitter.com/home?status=https%3A%2F%2Fwww.uniflex.se%2Fnyheter%2Fveckans-medarbetare-244%2F" target="_blank">
+                                <i class="bi bi-twitter"></i>
+                            </a>
+                        </div>
+                        <div class="icon-circle">
+                            <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3A%2F%2Fwww.uniflex.se%2Fnyheter%2Fveckans-medarbetare-244%2F" target="_blank">
+                                <i class="bi bi-linkedin"></i>
+                            </a>
+                        </div>
+                    </div>
                 </div>
-                <div class="icon-circle">
-                    <a href="https://twitter.com/home?status=https%3A%2F%2Fwww.uniflex.se%2Fnyheter%2Fveckans-medarbetare-244%2F" target="_blank">
-                        <i class="icon-twitter"></i>
-                    </a>
+
+                <?php if (has_post_thumbnail()) : ?>
+                    <div class="col-12 single-post__thumbnail">
+                        <?php the_post_thumbnail() ?>
+                    </div>
+                <?php endif; ?>
+
+                <div class="col-12 col-md-9 mx-auto">
+                    <?php the_content() ?>
+                    <div class="single-post__share-buttons">
+                        <div class="text-center primary-color-text-color d-flex justify-content-center align-items-center share-page">
+                            <?php echo esc_html__('Dela sida', 'egenslab') ?>
+                            <div class="icon-circle">
+                                <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.uniflex.se%2Fnyheter%2Fveckans-medarbetare-244%2F" target="_blank">
+                                    <i class="bi bi-facebook"></i>
+                                </a>
+                            </div>
+                            <div class="icon-circle">
+                                <a href="https://twitter.com/home?status=https%3A%2F%2Fwww.uniflex.se%2Fnyheter%2Fveckans-medarbetare-244%2F" target="_blank">
+                                    <i class="bi bi-twitter"></i>
+                                </a>
+                            </div>
+                            <div class="icon-circle">
+                                <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3A%2F%2Fwww.uniflex.se%2Fnyheter%2Fveckans-medarbetare-244%2F" target="_blank">
+                                    <i class="bi bi-linkedin"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="icon-circle">
-                    <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3A%2F%2Fwww.uniflex.se%2Fnyheter%2Fveckans-medarbetare-244%2F" target="_blank">
-                        <i class="icon-linkedin"></i>
-                    </a>
-                </div>
-            </div>
+
+            </article>
         </div>
-
-        <?php if (has_post_thumbnail()) : ?>
-            <div class="col-12 single-post__thumbnail">
-                <?php the_post_thumbnail() ?>
-            </div>
-        <?php endif; ?>
-
-        <div class="col-12 col-md-9 mx-auto">
-            <?php the_content() ?>
-            <div class="single-post__share-buttons">
-                <div class="text-center primary-color-text-color d-flex justify-content-center align-items-center share-page">
-                    <?php echo esc_html__('Dela sida', 'egenslab') ?>
-                    <div class="icon-circle">
-                        <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.uniflex.se%2Fnyheter%2Fveckans-medarbetare-244%2F" target="_blank">
-                            <i class="icon-facebook"></i>
-                        </a>
-                    </div>
-                    <div class="icon-circle">
-                        <a href="https://twitter.com/home?status=https%3A%2F%2Fwww.uniflex.se%2Fnyheter%2Fveckans-medarbetare-244%2F" target="_blank">
-                            <i class="icon-twitter"></i>
-                        </a>
-                    </div>
-                    <div class="icon-circle">
-                        <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3A%2F%2Fwww.uniflex.se%2Fnyheter%2Fveckans-medarbetare-244%2F" target="_blank">
-                            <i class="icon-linkedin"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-    </article>
+    </div>
 
 <?php endif;
 
@@ -79,7 +83,6 @@ if (is_single()) : ?>
  * For blog index.
  */
 if (!is_single()) : ?>
-
 
     <div class="col-12 col-sm-6">
         <div class="blog-post-list__item">
@@ -100,6 +103,5 @@ if (!is_single()) : ?>
             </div>
         </div>
     </div>
-
 
 <?php endif; ?>

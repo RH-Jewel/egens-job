@@ -71,6 +71,15 @@ class Elementor_Blog_Widget extends \Elementor\Widget_Base
     protected function render()
     {
         $settings = $this->get_settings_for_display();
+
+        $query = new \WP_Query(
+            array(
+                'post_type'      => 'post',
+                'post_status'    => 'publish'
+            )
+        );
+
+        $post_cat = get_terms('category');
 ?>
 
         <div class="container container-lg">
@@ -88,31 +97,13 @@ class Elementor_Blog_Widget extends \Elementor\Widget_Base
             <div class="container">
                 <div class="row">
                     <div class="col-12 col-xl-3">
-                        <div class="js-posts-filters">
-                            <div class="d-xl-none blog-posts-select">
-                                <div class="custom-select position-relative is-hidden entry-content">
-                                    <span class="active-li js-active-li">
-                                        <span class="js-current-office"><?php echo esc_html__('Alla kategorier', 'egenslab') ?></span>
-                                        <i class="bi bi-chevron-down"></i>
-                                    </span>
-                                    <ul>
-                                        <?php $blog_cat = get_terms('category'); ?>
-                                        <?php foreach ($blog_cat as $key => $cat) : ?>
-                                            <li> <a href="#" data-term-id="<?php echo $cat->slug ?>" class="<?php echo ($key == 0) ? "is-active" : ""; ?>"> <?php echo $cat->name ?> </a> </li>
-                                        <?php $key++;
-                                        endforeach;
-                                        ?>
-                                    </ul>
-                                </div>
-                            </div>
-
-                            <div class="posts-filters d-none d-xl-block">
-                                <?php foreach ($blog_cat as $key => $cat) : ?>
-                                    <div> <span class="<?php echo ($key == 0) ? "is-active" : ""; ?>" data-term-id="<?php echo $cat->slug ?>"><?php echo $cat->name ?></span>
-                                    </div>
+                        <div class="posts-filter-menu">
+                            <ul>
+                                <?php foreach ($post_cat as $key => $cat) : ?>
+                                    <li class="<?php echo ($key == 0) ? "is-active" : ""; ?>"><?php echo $cat->name ?></li>
                                 <?php $key++;
                                 endforeach; ?>
-                            </div>
+                            </ul>
                         </div>
                     </div>
 
@@ -120,53 +111,48 @@ class Elementor_Blog_Widget extends \Elementor\Widget_Base
                         <div class="js-spinner text-center d-none">
                             <div class="spinner"></div>
                         </div>
-                        <?php foreach ($blog_cat as $key => $value) : ?>
-                            <div class="row blog-post-list js-posts-container">
-                                <?php
-                                $blog_cat = get_posts(
-                                    array(
-                                        'showposts' => -1, //add -1 if you want to show all posts
-                                        'post_type' => 'post',
-                                        'tax_query' => array(
-                                            array(
-                                                'taxonomy' => 'category',
-                                                'field' => 'slug',
-                                                'terms' => $value->slug //pass your term name here
-                                            )
-                                        )
-                                    )
-                                );
-                                ?>
-                                <div class="col-12 col-sm-6">
-                                    <div class="blog-post-list__item">
-                                        <?php if (has_post_thumbnail()) {
-                                            the_post_thumbnail();
-                                        } ?>
-                                        <div class="post--meta">
-                                            <?php echo get_the_date('d M, Y'); ?> • <?php echo esc_html(get_the_author()); ?> </div>
-                                        <div class="entry-content">
-                                            <a href="<?php the_permalink() ?>">
-                                                <h3 class="black-text-color"><?php the_title() ?></h3>
-                                            </a>
-                                            <p>
-                                                <?php echo substr(get_the_excerpt(), '0', '100');
-                                                if (strlen(get_the_excerpt()) > 100) {
-                                                    echo '…';
-                                                }
-                                                ?>
-                                            </p>
-                                            <a href="<?php the_permalink() ?>" class="link--arrow"><?php echo esc_html__('Läs mer', 'egenslab') ?></a>
+
+                        <div class="row blog-post-list js-posts-container">
+                            <?php if ($query->have_posts()) :
+
+                                /* Start the Loop */
+                                while ($query->have_posts()) :
+                                    $query->the_post(); ?>
+
+                                    <div class="col-12 col-sm-6">
+                                        <div class="blog-post-list__item">
+                                            <div class="post--meta">
+                                                <?php echo get_the_date('d M, Y'); ?> • <?php echo esc_html(get_the_author()); ?>
+                                            </div>
+                                            <div class="entry-content">
+                                                <a href="<?php the_permalink() ?>">
+                                                    <h3 class="black-text-color"><?php the_title() ?></h3>
+                                                </a>
+                                                <p> <?php
+                                                    echo substr(get_the_excerpt(), '0', '100');
+                                                    if (strlen(get_the_excerpt()) > 100) {
+                                                        echo '…';
+                                                    }
+                                                    ?></p>
+                                                <a href="<?php the_permalink() ?>" class="link--arrow"><?php echo esc_html__('Läs mer', 'egenslab') ?></a>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            <?php $key++;
-                        endforeach ?>
+
+                            <?php endwhile;
+                                wp_reset_postdata();
+                            else :
+
+                                echo "No post";
+
+                            endif; ?>
+                        </div>
+
+                        <div class="row js-get-posts-container">
+                            <div class="col-12 text-center"> <button class="btn btn--black js-get-posts">Visa fler blogginlägg</button>
                             </div>
-                            <div class="row js-get-posts-container">
-                                <div class="col-12 text-center">
-                                    <button class="btn btn--black js-get-posts"><?php echo esc_html__('Visa fler blogginlägg', 'egenslab') ?></button>
-                                </div>
-                            </div>
+                        </div>
+
                     </div>
                 </div>
             </div>

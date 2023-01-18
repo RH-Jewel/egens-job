@@ -46,12 +46,37 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
     }
 
     .btn.btn--small {
-        margin: 20px 0;
-        display: block;
+        margin: 20px 10px;
         line-height: 48px;
     }
 }
 
+.posts-filter-menu ul li::before {
+    display: none;
+}
+
+.entry-content.single h1 {
+    font-size: 6rem;
+}
+
+@media (max-width: 767.98px) {
+    .entry-content.single h1 {
+        font-size: 3rem;
+    }
+}
+
+.component-blurbs.default-bg {
+    padding-top: 60px;
+}
+
+.slick-vertical .slick-slide {
+    border: none !important;
+}
+
+.single.custom-select .active-li.js-active-li {
+    background-color: #fff1e5;
+    color: #000;
+}
 
 .QW-card.QW-language-page {
     text-align: center;

@@ -8556,13 +8556,11 @@ section:not(.primary-color-bg) .custom-select ul li a:hover {
 }
 
 .entry-content a.link--arrow:before {
-    font-size: 10px;
-    font-size: .625rem;
+    font-size: 12px;
     position: absolute;
     left: -15px;
-    top: 5px;
-    font-family: fontello;
-    content: '\e804';
+    top: 4px;
+    content: '\276F';
     -webkit-transition: .2s all;
     transition: .2s all
 }
@@ -9590,7 +9588,7 @@ h2--xl,
 .h2--xl {
     margin-bottom: -5px;
     font-size: 80px;
-    font-size: 5rem
+    font-size: 4rem
 }
 
 @media (max-width: 991.98px) {
@@ -11858,6 +11856,14 @@ h5,
 }
 
 @media (min-width: 768px) {
+    .component-blog-posts .posts-filter-menu ul li {
+        font-size: 20px;
+        font-size: 1.25rem;
+        cursor:pointer;
+        padding: 10px;
+    }
+}
+@media (max-width: 767px) {
     .component-blog-posts .posts-filter-menu ul li {
         font-size: 20px;
         font-size: 1.25rem;
