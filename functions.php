@@ -234,13 +234,14 @@ function egenslab_scripts()
 add_action('wp_enqueue_scripts', 'egenslab_scripts');
 
 
-if( ! function_exists( 'your_prefix_enqueue_fa5' ) ) {
-	function your_prefix_enqueue_fa5() {
-	  wp_enqueue_style( 'fa5', 'https://use.fontawesome.com/releases/v5.13.0/css/all.css', array(), '5.13.0', 'all' );
-	  wp_enqueue_style( 'fa5-v4-shims', 'https://use.fontawesome.com/releases/v5.13.0/css/v4-shims.css', array(), '5.13.0', 'all' );
+if (!function_exists('your_prefix_enqueue_fa5')) {
+	function your_prefix_enqueue_fa5()
+	{
+		wp_enqueue_style('fa5', 'https://use.fontawesome.com/releases/v5.13.0/css/all.css', array(), '5.13.0', 'all');
+		wp_enqueue_style('fa5-v4-shims', 'https://use.fontawesome.com/releases/v5.13.0/css/v4-shims.css', array(), '5.13.0', 'all');
 	}
-	add_action( 'wp_enqueue_scripts', 'your_prefix_enqueue_fa5' );
-  }
+	add_action('wp_enqueue_scripts', 'your_prefix_enqueue_fa5');
+}
 
 /**
  * Implement the Custom Header feature.

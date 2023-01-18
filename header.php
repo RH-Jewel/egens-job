@@ -59,7 +59,7 @@ $options = get_option('egns_theme_options');
 
 				<?php if (!empty($options['header_logo']['url'])) : ?>
 					<div class="px-3 site-logo px-sm-4 d-flex align-items-center primary-color-bg">
-						<a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="Uniflex" rel="home">
+						<a href="<?php echo esc_url(home_url('/')); ?>" title="Uniflex" rel="home">
 							<img src="<?php echo $options['header_logo']['url'] ?>" alt="Uniflex">
 						</a>
 					</div>
@@ -88,7 +88,9 @@ $options = get_option('egns_theme_options');
 
 					<div class="px-3 px-sm-4 pl-sm-0 d-flex align-items-center position-relative js-like-menu-choice">
 						<a href="#" class="white-text-color" data-target="#likebar">
-							<i class="bi bi-suit-heart"></i>
+							<i class="bi bi-suit-heart js-like-count position-relative">
+								<i class="circle-indicator">0</i>
+							</i>
 						</a>
 						<div class="js-likebar likebar position-absolute d-none"></div>
 					</div>
@@ -132,7 +134,7 @@ $options = get_option('egns_theme_options');
 		<?php if (!empty($options['register_btn'])) : ?>
 			<div class="d-flex d-xl-none flex-column">
 				<a href="<?php echo esc_url($options['register_btn_link']) ?>" class="white-text-color menu-btn">
-				<?php echo $options['register_btn'] ?> </a>
+					<?php echo $options['register_btn'] ?> </a>
 			</div>
 		<?php endif; ?>
 	</div>

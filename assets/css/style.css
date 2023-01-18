@@ -1,14 +1,8 @@
-@import url(//db.onlinewebfonts.com/c/0545b648e6ea2b14311e2a15952a9b0c?family=Franklin+Gothic);
 @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css");
+@import url('https://fonts.googleapis.com/css2?family=Sofia+Sans:wght@200;300;400;500;600;700;800;900&display=swap');
 
-@font-face {
-    font-family: fontello1;
-    src: url(fonts/fontello346d.ttf);
-}
-
-@font-face {
-    font-family: fontello2;
-    src: url(fonts/fontello346d.woff);
+:root{
+    --primary-font: 'Sofia Sans', sans-serif;
 }
 
 .text-left {
@@ -226,7 +220,7 @@ section {
 
 body {
     margin: 0;
-    font-family: "franklin-gothic-urw-comp";
+    font-family: var(--primary-font);
     font-weight: 400;
 }
 
@@ -7516,7 +7510,7 @@ html.with-featherlight {
     font-size: 16px;
     line-height: 1.7;
     color: #2e2e32;
-    font-family: "franklin-gothic-urw"
+    font-family: var(--primary-font);
 }
 
 body {
@@ -8144,7 +8138,9 @@ a.card:hover {
     height: 70px;
     padding: 0 30px;
     cursor: pointer;
-    font-weight: 300
+    font-weight: 300;
+    color: #fff;
+    background-color: #000;
 }
 
 .custom-select.is-hidden ul {
@@ -8229,8 +8225,7 @@ section:not(.primary-color-bg) .custom-select ul li a:hover {
 }
 
 .custom-select i {
-    font-size: 11px;
-    font-size: .6875rem;
+    font-size: 20px;
     position: absolute;
     width: 80px;
     right: 0;
@@ -8389,7 +8384,7 @@ section:not(.primary-color-bg) .custom-select ul li a:hover {
 .entry-content h1--xl,
 .entry-content .h1--xl {
     font-size: 140px;
-    font-size: 8.75rem
+    font-size: 7rem
 }
 
 @media (max-width: 1199.98px) {
@@ -8532,7 +8527,7 @@ section:not(.primary-color-bg) .custom-select ul li a:hover {
 .entry-content p.preamble {
     font-size: 36px;
     font-size: 2.25rem;
-    font-family: "franklin-gothic-urw-comp";
+    font-family:  var(--primary-font);
     line-height: 46px
 }
 
@@ -8769,7 +8764,7 @@ img.aligncenter {
 
 .site-footer {
     padding: 90px 0;
-    font-family: "franklin-gothic-urw-comp"
+    font-family: var(--primary-font);
 }
 
 .site-footer.white-text-color .entry-content {
@@ -8786,7 +8781,8 @@ img.aligncenter {
 .site-footer.white-text-color .entry-content h4 {
     font-size: 18px;
     font-size: 1.125rem;
-    font-family: "franklin-gothic-urw-comp";
+    font-family: var(--primary-font);
+    
     color: #fff;
     margin-bottom: 28px
 }
@@ -9509,7 +9505,7 @@ h4,
 .h4,
 h5,
 .h5 {
-    font-family: "franklin-gothic-urw-comp";
+    font-family: var(--primary-font);
     font-weight: 400;
     margin: 0 0 .2em;
     line-height: 1
@@ -9930,7 +9926,7 @@ h5,
 .accordion__inner h4 {
     font-size: 18px;
     font-size: 1.125rem;
-    font-family: "franklin-gothic-urw";
+    font-family: var(--primary-font);
     font-weight: 500;
     min-width: 100%;
     width: 100%;
@@ -10177,7 +10173,7 @@ h5,
     display: -ms-flexbox;
     display: flex;
     cursor: pointer;
-    font-family: "franklin-gothic-urw"
+    font-family: var(--primary-font);
 }
 
 .job-archive-filter .toggle-filters div {
@@ -10288,7 +10284,7 @@ h5,
 .search-result__counter {
     font-size: 28px;
     font-size: 1.75rem;
-    font-family: "franklin-gothic-urw-comp";
+    font-family: var(--primary-font);
     color: #ff7200
 }
 
@@ -10402,7 +10398,7 @@ h5,
     font-size: 16px;
     font-size: 1rem;
     color: #ff7200;
-    font-family: "franklin-gothic-urw";
+    font-family: var(--primary-font);
     font-weight: 500;
     cursor: pointer;
     border: none;
@@ -10762,7 +10758,7 @@ h5,
 }
 
 .off-canvas-menu {
-    font-family: "franklin-gothic-urw-comp"
+    font-family: var(--primary-font);
 }
 
 .off-canvas-menu li {
@@ -10770,19 +10766,17 @@ h5,
 }
 
 .off-canvas-menu a {
-    font-size: 36px;
-    font-size: 2.25rem;
+    font-size: 2rem;
     color: #fff;
     -webkit-transition: color .2s;
     transition: color .2s
 }
 
-.off-canvas-menu .icon-arrow-down {
-    font-size: 10px;
-    font-size: .625rem;
+.off-canvas-menu .bi-chevron-down {
+    font-size: 20px;
     position: absolute;
     right: -8px;
-    top: 17px;
+    top: 6px;
     padding: 5px;
     cursor: pointer;
     -webkit-transition: -webkit-transform .2s;
@@ -10791,7 +10785,7 @@ h5,
     transition: transform .2s, -webkit-transform .2s
 }
 
-.off-canvas-menu .icon-arrow-down:before {
+.off-canvas-menu .bi-chevron-down:before {
     width: auto
 }
 
@@ -10825,7 +10819,7 @@ h5,
 .off-canvas-menu .sub-menu .sub-menu a {
     font-size: 18px;
     font-size: 1.125rem;
-    font-family: "franklin-gothic-urw"
+    font-family: var(--primary-font);
 }
 
 .sub-menu-is-open li a {
@@ -11501,7 +11495,7 @@ h5,
     font-size: 16px;
     font-size: 1rem;
     color: #ff7200;
-    font-family: "franklin-gothic-urw";
+    font-family: var(--primary-font);
     font-weight: 500;
     border: none;
     cursor: pointer
@@ -11807,7 +11801,7 @@ h5,
 }
 
 .share-page {
-    font-family: "franklin-gothic-urw-comp"
+    font-family: var(--primary-font);
 }
 
 .component-blog-posts .posts-outer-container.loading-posts .blog-post-list {
@@ -11864,18 +11858,20 @@ h5,
 }
 
 @media (min-width: 768px) {
-    .component-blog-posts .posts-filters span {
+    .component-blog-posts .posts-filter-menu ul li {
         font-size: 20px;
-        font-size: 1.25rem
+        font-size: 1.25rem;
+        cursor:pointer;
+        padding: 10px;
     }
 }
 
-.component-blog-posts .posts-filters span.is-active {
+.component-blog-posts .posts-filter-menu ul li.is-active {
     background-color: #ff7200;
     color: #fff
 }
 
-.component-blog-posts .posts-filters span:not(.is-active):hover {
+.component-blog-posts .posts-filter-menu ul li:not(.is-active):hover {
     color: #ff7200
 }
 
@@ -12361,7 +12357,7 @@ h5,
 }
 
 @media (max-width: 991.98px) {
-    .component-featured-employees .employee-content--name i {
+    .component-featured-employees .employee-content--name p {
         height: 60px;
         width: 60px;
         border-radius: 60px;
@@ -13164,7 +13160,7 @@ h5,
 .component-statistics [class*="col-"] .statistics-content .entry-content .statistics-block__heading {
     font-size: 90px;
     font-size: 5.625rem;
-    font-family: "franklin-gothic-urw-comp"
+    font-family: var(--primary-font);
 }
 
 @media (max-width: 991.98px) {

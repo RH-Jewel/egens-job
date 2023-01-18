@@ -24,6 +24,34 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
 
 /* added css for language image */
 
+.entry-content h1.heading-two {
+    font-size: 7.75rem;
+}
+
+@media (max-width: 1399px) {
+    .entry-content h1.heading-two {
+        font-size: 5.75rem;
+    }
+}
+
+@media (min-width: 992px) {
+    .component-faq .bg-image-wrapper {
+        top: 5%;
+    }
+}
+
+@media (max-width: 767.98px) {
+    .entry-content h1.heading-two {
+        font-size: 3rem;
+    }
+
+    .btn.btn--small {
+        margin: 20px 0;
+        display: block;
+        line-height: 48px;
+    }
+}
+
 
 .QW-card.QW-language-page {
     text-align: center;
@@ -76,6 +104,8 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
 /* Widget css  */
 .widget-title {
     margin-bottom: 28px;
+    font-size: 1.125rem;
+    text-transform: uppercase;
 }
 
 #menu-sidfotsmeny li {
@@ -88,6 +118,6 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
     color: rgba(255, 255, 255, 0.8);
 }
 
-#menu-sidfotsmeny ul li {
+#menu-sidfotsmeny li ul li {
     width: unset;
 }
