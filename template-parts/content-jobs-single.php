@@ -1,34 +1,6 @@
 <?php 
 
-$slug = get_query_var('slug');
-$jobPostId = get_query_var('job_id');
-
-$curl = curl_init();
-global $wp;
-curl_setopt_array($curl, array(
-  CURLOPT_URL => "https://api.recman.no/v2/get/?scope=jobPost&fields=projectId%2C%20name%2C%20title%2C%20ingress%2C%20body%2C%20numberOfPositions%2C%20startDate%2C%20endDate%2C%20logo%2C%20deadline%2C%20departmentId%2C%20facebook%2C%20linkedin%2C%20twitter%2C%20address1%2C%20address2%2C%20postalCode%2C%20city%2C%20country%2C%20web%2C%20salary%2C%20corporationId%2C%20created%2C%20updated%2C%20applyUrl%2C%20contacts%2C%20type%2C%20sector%2C%20accession%2C%20companyName%2C%20workplace%2C%20images%2C%20videoUrl%2C%20branchCategoryId%2C%20branchId%2C%20secondaryBranchCategoryId%2C%20secondaryBranchId%2C%20skills%2C%20countryId%2C%20regionId%2C%20cityId%2C%20position%2C%20positionType%2C%20socialMedia&key=230114013048k7558b612532a34cca8be4a12cbfe60d82021015876",
-  CURLOPT_RETURNTRANSFER => true,
-  CURLOPT_ENCODING => "",
-  CURLOPT_MAXREDIRS => 10,
-  CURLOPT_TIMEOUT => 30,
-  CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-  CURLOPT_CUSTOMREQUEST => "GET",
-  CURLOPT_HTTPHEADER => array(
-    "cache-control: no-cache",
-    "postman-token: d845d6ce-7ccc-90f3-1033-bbf7ddc01941"
-  ),
-));
-
-$response = curl_exec($curl);
-$err = curl_error($curl);
-
-curl_close($curl);
-
-if ($err) {
-  echo "cURL Error #:" . $err;
-}
-
-$response = json_decode( $response );
+$response = get_all_job_post();
 
 $job_single = $response->data;
 $job_single = json_decode(json_encode($job_single),true);
@@ -43,7 +15,7 @@ $job_single = json_decode(json_encode($job_single),true);
 				<div class="single-job-view__date">
                     <?php echo date("Y-m-d", strtotime($job_single[$jobPostId]['created'])) ?>					
                 </div>
-				<h1><?php echo $job_single[$jobPostId]['title'] ?? '' ?></h1>
+				<h1><?php echo $job_single[$jobPostId]['name'] ?? '' ?></h1>
 
 				<div class="single-job-view__button-bar d-flex d-md-block">
 					<!-- <button class="js-save-job btn__save-job" data-id="52932">

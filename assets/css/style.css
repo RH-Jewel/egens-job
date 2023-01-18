@@ -9965,11 +9965,12 @@ h5,
 .accordion__inner input[type="checkbox"]:checked+label:before {
     font-size: 10px;
     font-size: .625rem;
-    content: '\e805';
+    content: '\F26E';
     font-family: fontello;
     padding-left: 4px;
     -webkit-box-shadow: inset 0 0 0 1px #ff7200;
-    box-shadow: inset 0 0 0 1px #ff7200
+    box-shadow: inset 0 0 0 1px #ff7200;
+    font-family: 'bootstrap-icons';
 }
 
 .accordion__inner label {
