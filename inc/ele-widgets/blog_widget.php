@@ -121,6 +121,9 @@ class Elementor_Blog_Widget extends \Elementor\Widget_Base
 
                                     <div class="col-12 col-sm-6">
                                         <div class="blog-post-list__item">
+                                            <?php if (has_post_thumbnail()) :
+                                                echo the_post_thumbnail();
+                                            endif; ?>
                                             <div class="post--meta">
                                                 <?php echo get_the_date('d M, Y'); ?> • <?php echo esc_html(get_the_author()); ?>
                                             </div>
