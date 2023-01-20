@@ -89,7 +89,9 @@ class Elementor_Hero_Widget extends \Elementor\Widget_Base
     protected function render()
     {
         $settings = $this->get_settings_for_display();
-?>
+        $job_archive_url = home_url() . '/vacancies';
+        $response = get_all_job_post();
+    ?>
 
         <section class="component component-hero no-padding">
             <div class="row no-gutters">
@@ -110,12 +112,12 @@ class Elementor_Hero_Widget extends \Elementor\Widget_Base
                 <div class="row">
                     <div class="col">
                         <div class="entry-content white-text-color">
-                            <h1 class="h1--xl"><?php echo (!empty($settings['egens_hero_title']) ? esc_html__($settings['egens_hero_title'], 'egenslab') : '') ?></h1>
+                            <h1 class="h1--xl"><?php echo count( json_decode(json_encode($response->data),true) ) ?> <?php echo (!empty($settings['egens_hero_title']) ? esc_html__($settings['egens_hero_title'], 'egenslab') : '') ?></h1>
                             <?php if (!empty($settings['egens_hero_desc'])) : ?>
                                 <p class="font-size-large"><?php echo wp_kses($settings['egens_hero_desc'], wp_kses_allowed_html('post')) ?></p>
                             <?php endif ?>
-                            <form role="search" method="get" class="search-form" action="https://www.uniflex.se/jobb/">
-                                <input type="search" name="q" placeholder="Sök på ort, stad eller yrke"> <button type="submit"> <i class="bi bi-search"></i> <span> <b>257</b> jobb </span> </button>
+                            <form role="search" method="get" class="search-form" action="<?php echo $job_archive_url ?>">
+                                <input type="search" name="search" placeholder="Sök på jobbtitel, stad eller yrke"> <button type="submit"> <i class="bi bi-search"></i> <span> <b><?php echo count( json_decode(json_encode($response->data),true) ) ?></b> jobb </span> </button>
                             </form>
                         </div>
                     </div>

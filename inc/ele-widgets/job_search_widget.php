@@ -62,6 +62,8 @@ class Elementor_Job_Search_Widget extends \Elementor\Widget_Base
     protected function render()
     {
         $settings = $this->get_settings_for_display();
+        $response = get_all_job_post();
+        $job_archive_url = home_url() . '/vacancies';
 ?>
 
         <section class="component component-columns primary-color-bg skew-bg">
@@ -70,9 +72,9 @@ class Elementor_Job_Search_Widget extends \Elementor\Widget_Base
                     <div class="component-column col-12 medium-column">
                         <div class="column-type-wysiwyg">
                             <div class="entry-content">
-                                <h2 class="h2--xl" style="text-align: center;"><?php echo (!empty($settings['egens_job_search_heading_title']) ? esc_html__($settings['egens_job_search_heading_title'], 'egenslab') : '') ?></h2>
-                                <form role="search" method="get" class="search-form" action="https://www.uniflex.se/jobb/">
-                                    <input type="search" name="q" placeholder="Sök på ort, stad eller yrke ..."> <button type="submit"> <i class="bi bi-search"></i> <span> <b>259</b> jobb </span> </button>
+                                <h2 class="h2--xl" style="text-align: center;"><?php echo count( json_decode(json_encode($response->data),true) ) ?> <?php echo (!empty($settings['egens_job_search_heading_title']) ? esc_html__($settings['egens_job_search_heading_title'], 'egenslab') : '') ?></h2>
+                                <form role="search" method="get" class="search-form" action="<?php echo $job_archive_url ?>">
+                                    <input type="search" name="search" placeholder="Sök på jobbtitel, stad eller yrke ..."> <button type="submit"> <i class="bi bi-search"></i> <span> <b>259</b> jobb </span> </button>
                                 </form>
                             </div>
                         </div>

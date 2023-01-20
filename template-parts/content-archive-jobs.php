@@ -2,12 +2,25 @@
 
 $response = get_all_job_post();
 
+$search = get_query_var('search');
 
 
 // Get all unique Job Title and Job Post ID
 $jobArray = $response->data;
 $jobArray = json_decode(json_encode($jobArray),true);
 $jobTitleArray = array_unique(array_column($jobArray, 'title','jobPostId'));
+
+// Search 
+
+if( !empty( $search ) ) {
+	$searchKeyword = $search;
+	$jobArray = $titleListJob = array_filter($jobArray, function ($item) use ($searchKeyword) {
+		if ( stripos($item['title'], $searchKeyword) !== false || stripos( $item['city'], $searchKeyword) !== false || stripos( $item['title'], $searchKeyword ) ) {
+			return true;
+		}
+		return false;
+	});
+}
 
 // Job Post Pagination 
 $pages_links_and_data = paginate_job_posts($jobArray,4);
@@ -33,7 +46,7 @@ $positionArray = unique_multidim_array($positionArray,'position');
 		<div class="container">
 			<form id="jobSearchForm">
 				<div class="text-center">
-					<h1><?php echo count( json_decode(json_encode($response->data),true) ) ?> lediga jobb över hela Sverige</h1>
+					<h1><?php echo count( $pages_links_and_data['data'] ) ?> lediga jobb över hela Sverige</h1>
 				</div>
 
 				<div class="row small-gutters">
@@ -132,7 +145,7 @@ $positionArray = unique_multidim_array($positionArray,'position');
 				<div class="col">
 					<div class="d-flex justify-content-between flex-column flex-md-row search-result__wrapper">
 						<span class="search-result__counter">
-							Din sökning gav <?php echo count( json_decode(json_encode($response->data),true) ) ?> träffar			</span>
+							Din sökning gav <?php echo count( $pages_links_and_data['data'] ) ?> träffar			</span>
 						<!-- <ul class="job-archive__orderby d-flex">
 							<li>
 								<input type="radio" name="orderby" value="post_date" id="orderbydate"  checked='checked'>
@@ -186,23 +199,25 @@ $positionArray = unique_multidim_array($positionArray,'position');
 				</div>
 			<?php endforeach ?>
 		</div>
-		<?php $prev = 0; ?>
-		<div class="pagination pagination-footer text-center" id="jobPostPagination" data-pages="Array">
-			<?php foreach ($pages_links_and_data['page_links'] as $p) { ?>
-				<?php if (($p - $prev) > 1) { ?>
-					<a href="#">...</a>
-				<?php } ?>
-				<?php $prev = $p; ?>
+		<?php if( count( $pages_links_and_data['data'] ) > 4 ) : ?>
+			<?php $prev = 0; ?>
+			<div class="pagination pagination-footer text-center" id="jobPostPagination" data-pages="Array">
+				<?php foreach ($pages_links_and_data['page_links'] as $p) { ?>
+					<?php if (($p - $prev) > 1) { ?>
+						<a href="#">...</a>
+					<?php } ?>
+					<?php $prev = $p; ?>
 
-				<?php
-				$style_active = '';
-				if ($p == $page) {
-					$style_active = 'style="font-weight:bold"';
-				}
-			?>
+					<?php
+					$style_active = '';
+					if ($p == $page) {
+						$style_active = 'style="font-weight:bold"';
+					}
+				?>
 
-			<a class="job_paginate page-numbers" <?php echo $style_active; ?> href="#"><?php echo $p; ?></a>
-			<?php } ?>		
-		</div>
+				<a class="job_paginate page-numbers" <?php echo $style_active; ?> href="#"><?php echo $p; ?></a>
+				<?php } ?>		
+			</div>
+		<?php endif ?>
     </div>
 </section>
