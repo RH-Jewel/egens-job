@@ -153,15 +153,16 @@ function jobs_ajax_handler_scripts()
 {
 
 	global $wp_query;
-
+	global $wp;
 	// now the most interesting part
 	// we have to pass parameters to myloadmore.js script but we can get the parameters values only in PHP
 	// you can define variables directly in your HTML but I decided that the most proper way is wp_localize_script()
 	wp_localize_script('egenslab-custom', 'egens_frontend_ajax_handler_params', array(
-		'ajaxurl' => home_url() . '/wp-admin/admin-ajax.php', // WordPress AJAX
-		'posts' => json_encode($wp_query->query_vars), // everything about your loop is here
-		'current_page' => get_query_var('paged') ? get_query_var('paged') : 1,
-		'max_page' => $wp_query->max_num_pages,
+		'ajaxurl' 		=> home_url() . '/wp-admin/admin-ajax.php', // WordPress AJAX
+		'posts' 		=> json_encode($wp_query->query_vars), // everything about your loop is here
+		'current_page' 	=> get_query_var('paged') ? get_query_var('paged') : 1,
+		'max_page' 		=> $wp_query->max_num_pages,
+		'page_url'	 	=> home_url($wp->request),
 	));
 }
 
@@ -188,6 +189,18 @@ function get_job_by_filter_title_list_ajax_handler()
 		);
 	} else {
 		$titleListJob = $response['data'];
+	}
+
+	// Job Search by Keyword 
+
+	if( !empty( $_POST['jobInfo']['jobSearchKeyword'] ) ) {
+		$searchKeyword = $_POST['jobInfo']['jobSearchKeyword'];
+		$titleListJob = $titleListJob = array_filter($response['data'], function ($item) use ($searchKeyword) {
+			if ( stripos($item['title'], $searchKeyword) !== false || stripos( $item['city'], $searchKeyword) !== false || stripos( $item['title'], $searchKeyword ) ) {
+				return true;
+			}
+			return false;
+		});
 	}
 
 	// Filter by City 
@@ -225,7 +238,7 @@ function get_job_by_filter_title_list_ajax_handler()
 				<div class="d-flex justify-content-between flex-column flex-md-row search-result__wrapper">
 					<span class="search-result__counter">
 						Din sökning gav <?php echo count( $titleListJob ) ?> träffar			</span>
-					<ul class="job-archive__orderby d-flex">
+					<!-- <ul class="job-archive__orderby d-flex">
 						<li>
 							<input type="radio" name="orderby" value="post_date" id="orderbydate"  checked='checked'>
 							<label for="orderbydate">
@@ -236,7 +249,7 @@ function get_job_by_filter_title_list_ajax_handler()
 							<label for="orderbymunicipality">
 								Stad</a>
 							</label>
-					</ul>
+					</ul> -->
 				</div>
 			</div>
 		</div>
@@ -252,7 +265,7 @@ function get_job_by_filter_title_list_ajax_handler()
 					<div class="job-post__date">
 						<?php echo date("Y-m-d", strtotime($jobs['created'])) ?>
 					</div>
-					<a href="<?php echo home_url($wp->request) . '?job_id=' . $jobs['jobPostId'] . '&slug=' . strtolower(preg_replace('/[^A-Za-z0-9-]+/', '-', $jobs['name'])) ?>" class="job-post__link">
+					<a href="<?php echo $_POST['pageURL'] . '?job_id=' . $jobs['jobPostId'] . '&slug=' . strtolower(preg_replace('/[^A-Za-z0-9-]+/', '-', $jobs['name'])) ?>" class="job-post__link">
 						<?php if (!empty($jobs['name'])) : ?>
 							<h2><?php echo $jobs['name'] ?? '' ?></h2>
 						<?php endif ?>
@@ -272,8 +285,7 @@ function get_job_by_filter_title_list_ajax_handler()
 					</div>
 				</div>
 				<div class="col-xl-2 d-flex flex-column justify-content-center align-content-start">
-					<a href="<?php echo home_url($wp->request) . '?job_id=' . $jobs['jobPostId'] . '&slug=' . strtolower(preg_replace('/[^A-Za-z0-9-]+/', '-', $jobs['name'])) ?>" class="btn btn__submit">Läs mer och ansök</a>
-					<!-- <button class="js-save-job btn__save-job" data-save-job="Spara jobb" data-saved-job="Sparat jobb" data-id="53295"><i class="icon-mark-favourite"></i><span>Spara jobb</span></a> -->
+					<a href="<?php echo $_POST['pageURL'] . '?job_id=' . $jobs['jobPostId'] . '&slug=' . strtolower(preg_replace('/[^A-Za-z0-9-]+/', '-', $jobs['name'])) ?>" class="btn btn__submit">Läs mer och ansök</a>
 				</div>
 			</div>
 		</div>
@@ -286,3 +298,122 @@ function get_job_by_filter_title_list_ajax_handler()
 
 add_action('wp_ajax_get_job_by_filter_title_list', 'get_job_by_filter_title_list_ajax_handler'); // wp_ajax_{action}
 add_action('wp_ajax_nopriv_get_job_by_filter_title_list', 'get_job_by_filter_title_list_ajax_handler'); // wp_ajax_nopriv_{action}
+
+// Job Pagination 
+
+function get_job_by_pagination_ajax_handler() {
+	global $wp;
+	$response = get_all_job_post();
+	$jobArray = $response->data;
+	$jobArray = json_decode( json_encode($jobArray),true );
+	
+	// Job Post Pagination 
+	$pages_links_and_data = paginate_job_posts( $jobArray,4, $_POST['page_number'] );
+	
+	?>
+	<?php foreach( $pages_links_and_data['data'] as $jobs ) : ?>
+		<div class="job-post">
+			<div class="row">
+				<div class="col-xl-2 my-auto">
+					<div class="align-middle text-xl-center">
+						<img src="<?php echo $jobs['logo'] ?? '' ?>" alt="<?php echo $jobs['logo'] ?? '' ?>" />
+					</div>
+				</div>
+				<div class="col-xl-8">
+					<div class="job-post__date">
+						<?php echo date("Y-m-d", strtotime($jobs['created'])) ?>
+					</div>
+					<a href="<?php echo $_POST['pageURL'] . '?job_id=' . $jobs['jobPostId'] . '&slug=' . strtolower(preg_replace('/[^A-Za-z0-9-]+/', '-', $jobs['name'])) ?>" class="job-post__link">
+						<?php if (!empty($jobs['name'])) : ?>
+							<h2><?php echo $jobs['name'] ?? '' ?></h2>
+						<?php endif ?>
+					</a>
+
+					<div class="job-post__specification">
+						<a href="#"><?php echo $jobs['city'] ?? ''  ?></a>
+						<span class="job-post__delimiter">|</span>
+						<a href="#"><?php echo $jobs['position'] ?? '' ?></a>
+					</div>
+					<div class="job-post__description">
+						<div class="d-none d-xl-block">
+							<p>
+								<?php echo generateExcerpt($jobs['body'], '300')  ?>
+							</p>
+						</div>
+					</div>
+				</div>
+				<div class="col-xl-2 d-flex flex-column justify-content-center align-content-start">
+					<a href="<?php echo $_POST['pageURL'] . '?job_id=' . $jobs['jobPostId'] . '&slug=' . strtolower(preg_replace('/[^A-Za-z0-9-]+/', '-', $jobs['name'])) ?>" class="btn btn__submit">Läs mer och ansök</a>
+				</div>
+			</div>
+		</div>
+	<?php endforeach ?>
+<?php die(); }
+
+add_action('wp_ajax_get_job_by_pagination', 'get_job_by_pagination_ajax_handler'); // wp_ajax_{action}
+add_action('wp_ajax_nopriv_get_job_by_pagination', 'get_job_by_pagination_ajax_handler'); // wp_ajax_nopriv_{action}
+
+// Job Post Pagination
+
+function paginate_job_posts($data , $page_size = 4, $page = 1 ) {
+	// The page to display (Usually is received in a url parameter)
+
+	$page = $page;
+
+	// The number of records to display per page
+	$page_size = $page_size;
+
+	// Calculate total number of records, and total number of pages
+	$total_records = count($data);
+	$total_pages   = ceil($total_records / $page_size);
+
+	// Validation: Page to display can not be greater than the total number of pages
+	if ($page > $total_pages) {
+		$page = $total_pages;
+	}
+
+	// Validation: Page to display can not be less than 1
+	if ($page < 1) {
+		$page = 1;
+	}
+
+	// Calculate the position of the first record of the page to display
+	$offset = ($page - 1) * $page_size;
+
+	// Get the subset of records to be displayed from the array
+	$data = array_slice($data, $offset, $page_size);
+	// page links
+	$N = min($total_pages, 9);
+	$pages_links = array();
+
+	$tmp = $N;
+	if ($tmp < $page || $page > $N) {
+		$tmp = 2;
+	}
+	for ($i = 1; $i <= $tmp; $i++) {
+		$pages_links[$i] = $i;
+	}
+
+	if ($page > $N && $page <= ($total_pages - $N + 2)) {
+		for ($i = $page - 3; $i <= $page + 3; $i++) {
+			if ($i > 0 && $i < $total_pages) {
+				$pages_links[$i] = $i;
+			}
+		}
+	}
+
+	$tmp = $total_pages - $N + 1;
+	if ($tmp > $page - 2) {
+		$tmp = $total_pages - 1;
+	}
+	for ($i = $tmp; $i <= $total_pages; $i++) {
+		if ($i > 0) {
+			$pages_links[$i] = $i;
+		}
+	}
+	$page_link_and_data = [
+		'data'		=> $data,
+		'page_links'	=> $pages_links,
+	];
+	return $page_link_and_data;
+}

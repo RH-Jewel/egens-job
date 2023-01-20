@@ -28,6 +28,8 @@ var jobInfo = {
     filterCityList          : [],
     filterPositionTypeList  : [],
     filterPositionList      : [],
+    jobSearchKeyword        : '',
+    pageURL                 : egens_frontend_ajax_handler_params.page_url,
 }
 
 // Job Title Input
@@ -41,6 +43,15 @@ jQuery('.jobTitleInput').on("click",function(){
         jobInfo.filterTitleList = filterTitleList;
         filterJobAjaxHandler();
     }
+});
+
+// Job Search 
+jQuery('#jobSearchForm').submit(function(event){
+    event.preventDefault();
+    var search_keyword = jQuery('.job_search_value').val();
+    jobInfo.jobSearchKeyword = search_keyword;
+    filterJobAjaxHandler();
+    console.log( jobInfo );
 });
 
 // Job City Input
@@ -81,6 +92,44 @@ jQuery('.jobPositionInput').on("click",function(){
         filterJobAjaxHandler();
     }
 });
+
+// Paginate Jobs
+jQuery('.job_paginate').on("click",function(event){
+    event.preventDefault();
+    var page_number =  jQuery(this).text();
+    getJobByPagination(page_number,jQuery(this));
+    jQuery('html, body').animate({
+        scrollTop: jQuery("#mainJobArchive").offset().top
+    });
+
+});
+
+// Get Job by Pagination
+
+function getJobByPagination(page_number,selector) {
+    var data = {
+        'action'		    : 'get_job_by_pagination',
+        'page_number' 	    : page_number,
+    };
+    jQuery.ajax({ // you can also use $.post here
+        url : egens_frontend_ajax_handler_params.ajaxurl, // AJAX handler
+        data : data,
+        type : 'POST',
+        beforeSend: function() {
+            jQuery('.js-jobs-container').addClass('container-loader is-loading');
+        },
+        success : function( data ){
+          jQuery('#jobArchiveList').empty().html(data);
+          jQuery('.job_paginate').each(function(){
+            jQuery(this).removeClass('current');
+          });
+
+          selector.addClass('current');
+          jQuery('.js-jobs-container').removeClass('container-loader is-loading');
+        }
+    });
+} 
+
 // Main Job Post Handler by ajax
 function filterJobAjaxHandler(){
     var data = {
@@ -97,10 +146,14 @@ function filterJobAjaxHandler(){
         success : function( data ){
           jQuery('#jobArchiveList').empty().html(data);
           jQuery('.js-jobs-container').removeClass('container-loader is-loading');
+          jQuery('#jobPostPagination').css('display','none');
         }
     });
 }
-// jQuery(window).on('load', function(){
-//     console.log( jobInfo );
-//     jQuery('.jobTitleLabel').before().css('content','');
-// });
+
+jQuery(window).on('load', function(){
+    console.log( jobInfo );
+    jQuery('.pagination > .job_paginate:first').addClass('current');
+    // jQuery('head').append('<style> .jobTitleLabel::before{ content:""; } </style>');
+    console.log('Working');
+});

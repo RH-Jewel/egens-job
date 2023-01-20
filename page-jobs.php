@@ -7,6 +7,9 @@ get_header();
 $slug = get_query_var('slug');
 $job_id = get_query_var('job_id');
 
+// echo $slug;
+// echo $job_id;
+
 ?>
 <?php
     if( empty( $slug ) && empty( $job_id ) ) {

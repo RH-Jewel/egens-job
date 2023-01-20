@@ -1,4 +1,6 @@
 <?php 
+$slug = get_query_var('slug');
+$jobPostId = get_query_var('job_id');
 
 $response = get_all_job_post();
 

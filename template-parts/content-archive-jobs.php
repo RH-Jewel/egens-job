@@ -2,10 +2,15 @@
 
 $response = get_all_job_post();
 
+
+
 // Get all unique Job Title and Job Post ID
 $jobArray = $response->data;
 $jobArray = json_decode(json_encode($jobArray),true);
 $jobTitleArray = array_unique(array_column($jobArray, 'title','jobPostId'));
+
+// Job Post Pagination 
+$pages_links_and_data = paginate_job_posts($jobArray,4);
 
 // Get all Sweden City
 $all_city = get_all_sweden_city();
@@ -23,10 +28,10 @@ $positionArray = unique_multidim_array($positionArray,'position');
 
 ?>
 
-<section class="job-archive" data-page="1">
+<section class="job-archive" id="mainJobArchive">
 	<section class="job-archive-filter">
 		<div class="container">
-			<form action="#">
+			<form id="jobSearchForm">
 				<div class="text-center">
 					<h1><?php echo count( json_decode(json_encode($response->data),true) ) ?> lediga jobb över hela Sverige</h1>
 				</div>
@@ -39,7 +44,7 @@ $positionArray = unique_multidim_array($positionArray,'position');
 									<ul class="attribute-list">
 										<li class="js-job-archive-search-input">
 											<div class="job-archive-filter__search-input">
-												<input type="search" name="q" value="" autocomplete="off" placeholder="Sök på ort, stad eller yrke...">
+												<input type="search" class="job_search_value" value="" autocomplete="off" placeholder="Sök på jobbtitel, stad eller yrke...">
 											</div>
 										</li>
 									</ul>
@@ -128,7 +133,7 @@ $positionArray = unique_multidim_array($positionArray,'position');
 					<div class="d-flex justify-content-between flex-column flex-md-row search-result__wrapper">
 						<span class="search-result__counter">
 							Din sökning gav <?php echo count( json_decode(json_encode($response->data),true) ) ?> träffar			</span>
-						<ul class="job-archive__orderby d-flex">
+						<!-- <ul class="job-archive__orderby d-flex">
 							<li>
 								<input type="radio" name="orderby" value="post_date" id="orderbydate"  checked='checked'>
 								<label for="orderbydate">
@@ -139,47 +144,65 @@ $positionArray = unique_multidim_array($positionArray,'position');
 								<label for="orderbymunicipality">
 									Stad</a>
 								</label>
-						</ul>
+						</ul> -->
 					</div>
 				</div>
 			</div>
-			<?php foreach( $response->data as $jobs ) : ?>
+			<?php foreach( $pages_links_and_data['data'] as $jobs ) : ?>
 				<div class="job-post">
 					<div class="row">
 						<div class="col-xl-2 my-auto">
 							<div class="align-middle text-xl-center">
-								<img src="<?php echo $jobs->logo ?? '' ?>" alt="<?php echo $jobs->logo ?? '' ?>" />
+								<img src="<?php echo $jobs['logo'] ?? '' ?>" alt="<?php echo $jobs['logo'] ?? '' ?>" />
 							</div>
 						</div>
 						<div class="col-xl-8">
 							<div class="job-post__date">
-								<?php echo date("Y-m-d", strtotime($jobs->created)) ?>		
+								<?php echo date("Y-m-d", strtotime($jobs['created'])) ?>
 							</div>
-							<a href="<?php echo home_url( $wp->request ). '?job_id='.$jobs->jobPostId.'&slug='.strtolower(preg_replace('/[^A-Za-z0-9-]+/', '-', $jobs->name)) ?>" class="job-post__link">
-								<?php if( !empty( $jobs->name ) ) : ?>
-									<h2><?php echo $jobs->name ?></h2>
+							<a href="<?php echo home_url($wp->request) . '?job_id=' . $jobs['jobPostId'] . '&slug=' . strtolower(preg_replace('/[^A-Za-z0-9-]+/', '-', $jobs['name'])) ?>" class="job-post__link">
+								<?php if (!empty($jobs['name'])) : ?>
+									<h2><?php echo $jobs['name'] ?? '' ?></h2>
 								<?php endif ?>
 							</a>
 
 							<div class="job-post__specification">
-								<a href="#"><?php echo $jobs->city ?? ''  ?></a>
-								<span class="job-post__delimiter">|</span>						
-								<a href="#" style="text-transform: capitalize;"><?php echo camelCaseToString($jobs->position ?? '') ?></a>
-							</div> 
+								<a href="#"><?php echo $jobs['city'] ?? ''  ?></a>
+								<span class="job-post__delimiter">|</span>
+								<a href="#"><?php echo $jobs['position'] ?? '' ?></a>
+							</div>
 							<div class="job-post__description">
 								<div class="d-none d-xl-block">
 									<p>
-										<?php echo generateExcerpt( $jobs->body,'300' )  ?>
+										<?php echo generateExcerpt($jobs['body'], '300')  ?>
 									</p>
 								</div>
 							</div>
 						</div>
 						<div class="col-xl-2 d-flex flex-column justify-content-center align-content-start">
-							<a href="<?php echo home_url( $wp->request ). '?job_id='.$jobs->jobPostId.'&slug='.strtolower(preg_replace('/[^A-Za-z0-9-]+/', '-', $jobs->name)) ?>" class="btn btn__submit">Läs mer och ansök</a>
+							<a href="<?php echo home_url($wp->request) . '?job_id=' . $jobs['jobPostId'] . '&slug=' . strtolower(preg_replace('/[^A-Za-z0-9-]+/', '-', $jobs['name'])) ?>" class="btn btn__submit">Läs mer och ansök</a>
 						</div>
 					</div>
 				</div>
 			<?php endforeach ?>
+		</div>
+		<?php $prev = 0; ?>
+		<div class="pagination pagination-footer text-center" id="jobPostPagination" data-pages="Array">
+			<?php foreach ($pages_links_and_data['page_links'] as $p) { ?>
+				<?php if (($p - $prev) > 1) { ?>
+					<a href="#">...</a>
+				<?php } ?>
+				<?php $prev = $p; ?>
+
+				<?php
+				$style_active = '';
+				if ($p == $page) {
+					$style_active = 'style="font-weight:bold"';
+				}
+			?>
+
+			<a class="job_paginate page-numbers" <?php echo $style_active; ?> href="#"><?php echo $p; ?></a>
+			<?php } ?>		
 		</div>
     </div>
 </section>
