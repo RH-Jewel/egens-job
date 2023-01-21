@@ -46,7 +46,7 @@ $positionArray = unique_multidim_array($positionArray,'position');
 		<div class="container">
 			<form id="jobSearchForm">
 				<div class="text-center">
-					<h1><?php echo count( $pages_links_and_data['data'] ) ?> lediga jobb över hela Sverige</h1>
+					<h1><?php echo count( $jobArray ) ?> lediga jobb över hela Sverige</h1>
 				</div>
 
 				<div class="row small-gutters">
@@ -199,7 +199,7 @@ $positionArray = unique_multidim_array($positionArray,'position');
 				</div>
 			<?php endforeach ?>
 		</div>
-		<?php if( count( $pages_links_and_data['data'] ) > 4 ) : ?>
+		<?php if( count( $pages_links_and_data['data'] ) > 3 ) : ?>
 			<?php $prev = 0; ?>
 			<div class="pagination pagination-footer text-center" id="jobPostPagination" data-pages="Array">
 				<?php foreach ($pages_links_and_data['page_links'] as $p) { ?>
