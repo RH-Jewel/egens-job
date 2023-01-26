@@ -115,6 +115,8 @@ class Elementor_Statistics_Widget extends \Elementor\Widget_Base
     {
         $settings = $this->get_settings_for_display();
         $data = $settings['egens_statistics_jobs_list'];
+        $response = get_all_job_post();
+        $response = json_decode(json_encode($response), true);
 ?>
 
         <section class="component-statistics">
@@ -148,6 +150,15 @@ class Elementor_Statistics_Widget extends \Elementor\Widget_Base
                         </div>
                     </div>
                 <?php endforeach ?>
+                <div class="col-md-6 col-lg-3 d-inline-block d-md-flex statistics-block flex-column align-items-start align-items-md-center justify-content-start justify-content-md-center js-slick-slide">
+                    <div class="statistics-wrapper primary-color-bg white-text-color d-flex justify-content-center align-items-center">
+                        <div class="statistics-content d-flex align-items-center">
+                            <div class="entry-content d-flex flex-column text-center"> <span class="statistics-block__heading"><?php echo count( $response['data'] ) ?></span>
+                                <p>ledige jobber</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
 

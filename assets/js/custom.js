@@ -171,13 +171,15 @@ jQuery('body').on('click','.save__jobs',function(){
         url : egens_frontend_ajax_handler_params.ajaxurl, // AJAX handler
         data : data,
         type : 'POST',
+        beforeSend : function(){
+            jQuery('.modalLike .circle-loader').css('display','block');
+            jQuery('.modalLike .panel-column-content.is-visible').css('opacity','0.4');
+        },
         success : function( data ){
-            // data = JSON.parse(data);
             jQuery('#modalLikeContent').empty().html( data );
             sessionStorage.setItem("modalLikeContent", data);
-
-            // console.log( data.save_job_html );
-
+            jQuery('.modalLike .circle-loader').css('display','none');
+            jQuery('.modalLike .panel-column-content.is-visible').css('opacity','1');
         }
     });
 });
@@ -204,12 +206,15 @@ jQuery('body').on('click','.js-remove-job',function(){
         url : egens_frontend_ajax_handler_params.ajaxurl, // AJAX handler
         data : data,
         type : 'POST',
+        beforeSend : function(){
+            jQuery('.modalLike .circle-loader').css('display','block');
+            jQuery('.modalLike .panel-column-content.is-visible').css('opacity','0.4');
+        },
         success : function( data ){
-            // data = JSON.parse(data);
             jQuery('#modalLikeContent').empty().html( data );
             sessionStorage.setItem("modalLikeContent", data);
-
-            // console.log( data.save_job_html );
+            jQuery('.modalLike .circle-loader').css('display','none');
+            jQuery('.modalLike .panel-column-content.is-visible').css('opacity','1');
 
         }
     });
@@ -224,11 +229,6 @@ if( modalLikeContent ) {
 if( modalLikeContentCount ) {
     jQuery('.circle-indicator-count').text(modalLikeContentCount);
 }
-
-// jQuery(window).bind("beforeunload", function() { 
-//     sessionStorage.setItem("modalLikeContent",'');
-//     sessionStorage.setItem("modalLikeContentCount",'')
-// });
 
 jQuery(window).on('load', function(){
     jQuery('.pagination > .job_paginate:first').addClass('current');

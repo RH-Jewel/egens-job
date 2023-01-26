@@ -163,6 +163,7 @@ $options = get_option('egns_theme_options');
 						</div>
 					</div>
 				</div>
+				<div class="circle-loader"></div>
 			</div>
 		</div>
 	</div>

@@ -10519,6 +10519,43 @@ h5,
     opacity: .9
 }
 
+/* Circle loader css  */
+.modalLike .circle-loader{
+    position: relative;
+    display: none;
+    top: -130px;
+}
+.modalLike .circle-loader:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
+.modalLike .circle-loader:after {
+    content: '';
+    position: absolute;
+    top: 50px;
+    left: 50%;
+    display: block;
+    width: 1.2em;
+    height: 1.2em;
+    margin-left: -.6em;
+    margin-top: -.6em;
+    border-radius: 50%;
+    border: 2px solid #fff;
+    border-right-color: rgba(255, 255, 255, 0);
+    border-top-color: rgba(255, 255, 255, 0);
+    z-index: 10;
+    -webkit-animation: rotate .5s infinite linear;
+    animation: rotate .5s infinite linear;
+}
+
 .ratio-container {
     position: relative;
     overflow: hidden
