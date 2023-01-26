@@ -63,7 +63,7 @@ class Elementor_Job_Search_Widget extends \Elementor\Widget_Base
     {
         $settings = $this->get_settings_for_display();
         $response = get_all_job_post();
-        $job_archive_url = home_url() . '/vacancies';
+        $job_archive_url = home_url() . '/jobber';
 ?>
 
         <section class="component component-columns primary-color-bg skew-bg">

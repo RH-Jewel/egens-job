@@ -99,7 +99,7 @@ class Elementor_Hero_Widget extends \Elementor\Widget_Base
     protected function render()
     {
         $settings = $this->get_settings_for_display();
-        $job_archive_url = home_url() . '/vacancies';
+        $job_archive_url = home_url() . '/jobber';
         $response = get_all_job_post();
     ?>
 
