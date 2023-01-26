@@ -62,7 +62,7 @@ $job_single = json_decode(json_encode($job_single),true);
                                     </div>
                                     <div class="single-job-view__definition">
                                         <span>Uppdragstyp:</span>
-                                            <a href="../indexbb09.html?tax_type_of_employment[]=tillsvidareanstallning"><?php echo $job_single[$jobPostId]['positionType'] ?? '' ?></a>
+                                            <a href=""><?php echo $job_single[$jobPostId]['positionType'] ?? '' ?></a>
                                     </div>
                                     <!-- <div class="single-job-view__definition">
                                         <span>Befattning:</span>

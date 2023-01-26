@@ -150,10 +150,86 @@ function filterJobAjaxHandler(){
         }
     });
 }
+let saveJobIdArray = [];
+jQuery('body').on('click','.save__jobs',function(){
+    jQuery(this).toggleClass('is-saved');
+    var job_id = jQuery(this).attr('data-save-job-id');
+    if( !saveJobIdArray.includes(job_id) ){
+        saveJobIdArray.push(job_id);
+    }else{
+        var filterJobId = saveJobIdArray.filter(item => item !== job_id);
+        saveJobIdArray = filterJobId;
+    }
+    var data = {
+        'action'		    : 'save_jobs',
+        'job_id_array' 	    : saveJobIdArray,
+    };
+    var job_count = saveJobIdArray.length
+    jQuery('.circle-indicator-count').text(job_count);
+    sessionStorage.setItem("modalLikeContentCount", job_count);
+    jQuery.ajax({ // you can also use $.post here
+        url : egens_frontend_ajax_handler_params.ajaxurl, // AJAX handler
+        data : data,
+        type : 'POST',
+        success : function( data ){
+            // data = JSON.parse(data);
+            jQuery('#modalLikeContent').empty().html( data );
+            sessionStorage.setItem("modalLikeContent", data);
+
+            // console.log( data.save_job_html );
+
+        }
+    });
+});
+
+// Remove Save Jobs
+jQuery('body').on('click','.js-remove-job',function(){
+    var job_id = jQuery(this).attr('data-save-job-id');
+    jQuery('.save__jobs').attr('data-save-job-id');
+    jQuery(".save__jobs[data-save-job-id='" + job_id +"']").removeClass('is-saved');
+    if( !saveJobIdArray.includes(job_id) ){
+        saveJobIdArray.push(job_id);
+    }else{
+        var filterJobId = saveJobIdArray.filter(item => item !== job_id);
+        saveJobIdArray = filterJobId;
+    }
+    var data = {
+        'action'		    : 'save_jobs',
+        'job_id_array' 	    : saveJobIdArray,
+    };
+    var job_count = saveJobIdArray.length
+    jQuery('.circle-indicator-count').text(job_count);
+    sessionStorage.setItem("modalLikeContentCount", job_count);
+    jQuery.ajax({ // you can also use $.post here
+        url : egens_frontend_ajax_handler_params.ajaxurl, // AJAX handler
+        data : data,
+        type : 'POST',
+        success : function( data ){
+            // data = JSON.parse(data);
+            jQuery('#modalLikeContent').empty().html( data );
+            sessionStorage.setItem("modalLikeContent", data);
+
+            // console.log( data.save_job_html );
+
+        }
+    });
+});
+
+var modalLikeContent = sessionStorage.getItem("modalLikeContent");
+var modalLikeContentCount = sessionStorage.getItem("modalLikeContentCount");
+
+if( modalLikeContent ) {
+    jQuery('#modalLikeContent').empty().html( modalLikeContent );
+}
+if( modalLikeContentCount ) {
+    jQuery('.circle-indicator-count').text(modalLikeContentCount);
+}
+
+// jQuery(window).bind("beforeunload", function() { 
+//     sessionStorage.setItem("modalLikeContent",'');
+//     sessionStorage.setItem("modalLikeContentCount",'')
+// });
 
 jQuery(window).on('load', function(){
-    console.log( jobInfo );
     jQuery('.pagination > .job_paginate:first').addClass('current');
-    // jQuery('head').append('<style> .jobTitleLabel::before{ content:""; } </style>');
-    console.log('Working');
 });

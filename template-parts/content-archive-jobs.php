@@ -194,6 +194,7 @@ $positionArray = unique_multidim_array($positionArray,'position');
 						</div>
 						<div class="col-xl-2 d-flex flex-column justify-content-center align-content-start">
 							<a href="<?php echo home_url($wp->request) . '?job_id=' . $jobs['jobPostId'] . '&slug=' . strtolower(preg_replace('/[^A-Za-z0-9-]+/', '-', $jobs['name'])) ?>" class="btn btn__submit">Läs mer och ansök</a>
+							<button class="save__jobs btn__save-job" data-save-job-id="<?php echo $jobs['jobPostId'] ?? '' ?>"><i class="bi bi-bookmark-fill"></i><span>Spara jobb</span></button>
 						</div>
 					</div>
 				</div>

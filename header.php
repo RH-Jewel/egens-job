@@ -14,8 +14,8 @@
  */
 
 get_header();
-
-
+session_start();
+$_SESSION["save_job_array"] = [];
 // Get theme options value
 $options = get_option('egns_theme_options');
 
@@ -87,9 +87,9 @@ $options = get_option('egns_theme_options');
 					</nav>
 
 					<div class="px-3 px-sm-4 pl-sm-0 d-flex align-items-center position-relative js-like-menu-choice">
-						<a href="#" class="white-text-color" data-target="#likebar">
-							<i class="bi bi-suit-heart js-like-count position-relative">
-								<i class="circle-indicator">0</i>
+						<a href="#" class="white-text-color" data-toggle="modal" data-target=".modalLike">
+							<i class="bi bi-suit-heart position-relative">
+								<i class="circle-indicator circle-indicator-count">0</i>
 							</i>
 						</a>
 						<div class="js-likebar likebar position-absolute d-none"></div>
@@ -103,7 +103,7 @@ $options = get_option('egns_theme_options');
 					<?php endif; ?>
 
 					<div class="d-flex align-items-center h-100 hamburger-container">
-						<span class="phone-number"><?php echo $options['phn_number'] ?></span>
+						<span class="phone-number"><?php echo $options['phn_number'] ?? '' ?></span>
 						<a class="px-4 hamburger d-flex align-items-center ml-md-auto js-toggle-navbar" aria-expanded="false" aria-label="Toggle navigation">
 							<span class="hamburger__icon d-block"></span>
 						</a>
@@ -138,3 +138,40 @@ $options = get_option('egns_theme_options');
 			</div>
 		<?php endif; ?>
 	</div>
+
+	<!-- <div class="modal fade likebar-modal show" id="likebar" tabindex="-1" role="dialog" aria-labelledby="likebar" style="padding-right: 17px; display: block;">
+
+	</div> -->
+	<div class="modal fade modalLike" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-lg" role="document">
+			<div class="modal-content">
+				<div class="modal-body js-likebar-body">	
+					<div class="panels__wrapper">
+						<div class="panel-column-header d-flex">
+							<div class="panel-column-header--item d-flex align-items-center justify-content-center js-toggle-panel-item is-active" data-panel-content-id="0">
+								<h3>
+								<font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Saved jobs (</font></font><span class="js-panel-counter"><font style="vertical-align: inherit;"><font class="circle-indicator-count" style="vertical-align: inherit;">0</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> st )</font></font>
+							</h3>
+							</div>
+
+							<div class="panel-column-header--item d-flex align-items-center justify-content-center js-toggle-panel-item" data-panel-content-id="1">
+								<h3><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Saved searches ( 0 pcs )</font></font></h3>
+							</div>
+						</div>
+						<div class="panel-column-content is-visible" id="modalLikeContent" data-panel-content-id="0">
+							
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script>
+		var job_data = localStorage.getItem("job_data");
+		console.log( job_data );
+	</script>
+	<style>
+		.modal-backdrop.show {
+			opacity: 0.8;
+		}
+	</style>

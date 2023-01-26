@@ -344,6 +344,7 @@ function get_job_by_pagination_ajax_handler() {
 				</div>
 				<div class="col-xl-2 d-flex flex-column justify-content-center align-content-start">
 					<a href="<?php echo $_POST['pageURL'] . '?job_id=' . $jobs['jobPostId'] . '&slug=' . strtolower(preg_replace('/[^A-Za-z0-9-]+/', '-', $jobs['name'])) ?>" class="btn btn__submit">Läs mer och ansök</a>
+					<button class="save__jobs btn__save-job" data-save-job-id="<?php echo $jobs['jobPostId'] ?? '' ?>" data-save-job="<?php echo $jobs['name'] ?? '' ?>"><i class="bi bi-bookmark-fill"></i><span>Spara jobb</span></button>
 				</div>
 			</div>
 		</div>
@@ -417,3 +418,37 @@ function paginate_job_posts($data , $page_size = 4, $page = 1 ) {
 	];
 	return $page_link_and_data;
 }
+
+// Save Jobs
+function save_jobs_ajax_handler() {
+	$all_jobs = get_all_job_post();
+	$all_jobs = json_decode(json_encode($all_jobs), true);
+	$jobIdArray = $_POST['job_id_array'];
+
+	if ( isset($jobIdArray) ) {
+		$jobCityId = $jobIdArray;
+		$all_jobs = array_filter($all_jobs['data'], function ($var) use ($jobCityId) {
+			return in_array($var['jobPostId'], $jobCityId);
+		});
+	} else {
+		$all_jobs = $all_jobs;
+	}
+	$new_array = array_column($all_jobs, 'name','jobPostId');
+
+	$save_jobs_html = '';
+
+	foreach ($new_array as $key => $value) {
+		$save_jobs_html .= '
+		<div class="likebar__job">
+			<a href="https://www.uniflex.se/jobb/truckforare-kyllager-frukt-gront-61897/">
+				<h3>'.$value.'</h3>
+			</a>
+			<button class="js-remove-job" data-save-job-id="'.$key.'"><i class="bi bi-x-lg"></i></button>
+		</div>
+		';
+	}
+	print_r( $save_jobs_html );
+}
+
+add_action('wp_ajax_save_jobs', 'save_jobs_ajax_handler'); // wp_ajax_{action}
+add_action('wp_ajax_nopriv_save_jobs', 'save_jobs_ajax_handler'); // wp_ajax_nopriv_{action}

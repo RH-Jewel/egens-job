@@ -10411,11 +10411,6 @@ h5,
     margin-right: 7px
 }
 
-.job-post .btn__save-job.is-saved {
-    cursor: normal;
-    pointer-events: none
-}
-
 .job-post .btn__save-job.is-saved i {
     color: #ff7200
 }
@@ -10438,7 +10433,7 @@ h5,
     display: inline
 }
 
-.likebar-modal {
+.modalLike {
     padding-top: 150px;
     max-width: 920px;
     margin-left: auto;
@@ -10447,14 +10442,14 @@ h5,
 }
 
 @media (max-width: 991.98px) {
-    .likebar-modal h3 {
+    .modalLike h3 {
         font-size: 16px;
         font-size: 1rem
     }
 }
 
-.likebar-modal .likebar__job,
-.likebar-modal .likebar__job-search {
+.modalLike .likebar__job,
+.modalLike .likebar__job-search {
     display: -webkit-box;
     display: -webkit-flex;
     display: -ms-flexbox;
@@ -10468,53 +10463,53 @@ h5,
     padding-bottom: 10px
 }
 
-.likebar-modal .likebar__job:hover,
-.likebar-modal .likebar__job-search:hover {
+.modalLike .likebar__job:hover,
+.modalLike .likebar__job-search:hover {
     border-color: #ff7200
 }
 
-.likebar-modal .likebar__job i,
-.likebar-modal .likebar__job-search i {
+.modalLike .likebar__job i,
+.modalLike .likebar__job-search i {
     color: #ff7200;
     cursor: pointer
 }
 
-.likebar-modal .likebar__job a,
-.likebar-modal .likebar__job-search a {
+.modalLike .likebar__job a,
+.modalLike .likebar__job-search a {
     width: 100%
 }
 
-.likebar-modal .likebar__job a h3,
-.likebar-modal .likebar__job-search a h3 {
+.modalLike .likebar__job a h3,
+.modalLike .likebar__job-search a h3 {
     -webkit-transition: color .2s;
     transition: color .2s
 }
 
-.likebar-modal .likebar__job a:hover,
-.likebar-modal .likebar__job-search a:hover {
+.modalLike .likebar__job a:hover,
+.modalLike .likebar__job-search a:hover {
     text-decoration: none
 }
 
-.likebar-modal .likebar__job a:hover h3,
-.likebar-modal .likebar__job-search a:hover h3 {
+.modalLike .likebar__job a:hover h3,
+.modalLike .likebar__job-search a:hover h3 {
     color: #fff
 }
 
-.likebar-modal .modal-dialog {
+.modalLike .modal-dialog {
     max-width: 100%
 }
 
-.likebar-modal .modal-dialog .modal-content {
+.modalLike .modal-dialog .modal-content {
     background-color: transparent;
     border-radius: 0;
     border: none
 }
 
-.likebar-modal .panel-column-header--item.is-active h3 {
+.modalLike .panel-column-header--item.is-active h3 {
     color: #fff
 }
 
-.likebar-modal .panel-column-header {
+.modalLike .panel-column-header {
     max-width: 675px;
     margin-left: auto;
     margin-right: auto
@@ -13404,3 +13399,24 @@ ul#menu-main-menu {
     font-size: 20px;
 }
 
+.modalLike {
+    padding-top: 150px;
+    max-width: 920px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+}
+.modalLike .modal-content {
+    background-color: transparent;
+    border: none;
+}
+.panel-column-header--item:first-of-type h3 {
+    color: #fff;
+    font-size: 2rem;
+    letter-spacing: -2px;
+}
+.panel-column-header--item:last-of-type {
+    color: #fff;
+    font-size: 2rem;
+    letter-spacing: -2px;
+}
