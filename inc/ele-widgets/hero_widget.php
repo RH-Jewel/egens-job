@@ -65,7 +65,7 @@ class Elementor_Hero_Widget extends \Elementor\Widget_Base
             [
                 'label' => esc_html__('Title', 'egenslab'),
                 'type' => \Elementor\Controls_Manager::TEXT,
-                'default' => esc_html__('238 lediga job', 'egenslab'),
+                'default' => esc_html__('lediga job', 'egenslab'),
                 'label_block' => true,
             ]
         );
@@ -117,7 +117,7 @@ class Elementor_Hero_Widget extends \Elementor\Widget_Base
                                 <p class="font-size-large"><?php echo wp_kses($settings['egens_hero_desc'], wp_kses_allowed_html('post')) ?></p>
                             <?php endif ?>
                             <form role="search" method="get" class="search-form" action="<?php echo $job_archive_url ?>">
-                                <input type="search" name="search" placeholder="Sök på jobbtitel, stad eller yrke"> <button type="submit"> <i class="bi bi-search"></i> <span> <b><?php echo count( json_decode(json_encode($response->data),true) ) ?></b> jobb </span> </button>
+                                <input type="search" name="search" placeholder="Sök på ort, stad eller yrke"> <button type="submit"> <i class="bi bi-search"></i> <span> <b><?php echo count( json_decode(json_encode($response->data),true) ) ?></b> <?php echo esc_html__('jobb','egenslab') ?> </span> </button>
                             </form>
                         </div>
                     </div>
