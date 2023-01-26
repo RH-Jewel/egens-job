@@ -124,9 +124,45 @@ class Elementor_Work_Steps_Widget extends \Elementor\Widget_Base
 
         $this->end_controls_section();
 
-
-
         // Content Tab End
+
+        // Content Style Tab Start
+
+        $this->start_controls_section(
+            'egens_work_steps_two_title_style_section',
+            [
+                'label' => esc_html__('Title', 'egenslab'),
+                'tab' => \Elementor\Controls_Manager::TAB_STYLE,
+            ]
+        );
+
+        $this->add_group_control(
+			\Elementor\Group_Control_Typography::get_type(),
+			[
+				'name' => 'egens_work_steps_two_title_style_typography',
+				'selector' => '{{WRAPPER}} .component-text-with-image .entry-content h2',
+			]
+		);
+
+        $this->end_controls_section();
+
+         $this->start_controls_section(
+            'egens_work_steps_two_description_style_section',
+            [
+                'label' => esc_html__('Description', 'egenslab'),
+                'tab' => \Elementor\Controls_Manager::TAB_STYLE,
+            ]
+        );
+
+        $this->add_group_control(
+			\Elementor\Group_Control_Typography::get_type(),
+			[
+				'name' => 'egens_work_steps_two_description_style_typography',
+				'selector' => '{{WRAPPER}} .component-text-with-image .entry-content p',
+			]
+		);
+
+        $this->end_controls_section();
 
 
     }

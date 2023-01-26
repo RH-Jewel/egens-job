@@ -75,6 +75,44 @@ class Elementor_Hero_Two_Widget extends \Elementor\Widget_Base
 
         // Content Tab End
 
+         // Content Style Tab Start
+
+         $this->start_controls_section(
+            'egens_hero_two_title_style_section',
+            [
+                'label' => esc_html__('Title', 'egenslab'),
+                'tab' => \Elementor\Controls_Manager::TAB_STYLE,
+            ]
+        );
+
+        $this->add_group_control(
+			\Elementor\Group_Control_Typography::get_type(),
+			[
+				'name' => 'egens_hero_two_title_style_typography',
+				'selector' => '{{WRAPPER}} .page-hero h1.heading-two',
+			]
+		);
+
+        $this->end_controls_section();
+
+         $this->start_controls_section(
+            'egens_hero_two_description_style_section',
+            [
+                'label' => esc_html__('Description', 'egenslab'),
+                'tab' => \Elementor\Controls_Manager::TAB_STYLE,
+            ]
+        );
+
+        $this->add_group_control(
+			\Elementor\Group_Control_Typography::get_type(),
+			[
+				'name' => 'egens_hero_two_description_style_typography',
+				'selector' => '{{WRAPPER}} .page-hero .entry-content p',
+			]
+		);
+
+        $this->end_controls_section();
+
 
     }
 
