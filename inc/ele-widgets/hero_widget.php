@@ -79,6 +79,16 @@ class Elementor_Hero_Widget extends \Elementor\Widget_Base
             ]
         );
 
+        $this->add_control(
+            'egens_hero_search_placeholder_text',
+            [
+                'label' => esc_html__('Search Placeholder Text', 'egenslab'),
+                'type' => \Elementor\Controls_Manager::TEXT,
+                'default' => esc_html__('Søk på stillingstittel, sted eller yrke', 'egenslab'),
+                'label_block' => true,
+            ]
+        );
+
         $this->end_controls_section();
 
         // Content Tab End
@@ -117,7 +127,7 @@ class Elementor_Hero_Widget extends \Elementor\Widget_Base
                                 <p class="font-size-large"><?php echo wp_kses($settings['egens_hero_desc'], wp_kses_allowed_html('post')) ?></p>
                             <?php endif ?>
                             <form role="search" method="get" class="search-form" action="<?php echo $job_archive_url ?>">
-                                <input type="search" name="search" placeholder="Sök på ort, stad eller yrke"> <button type="submit"> <i class="bi bi-search"></i> <span> <b><?php echo count( json_decode(json_encode($response->data),true) ) ?></b> <?php echo esc_html__('jobb','egenslab') ?> </span> </button>
+                                <input type="search" name="search" placeholder="<?php echo (!empty($settings['egens_hero_search_placeholder_text']) ? wp_kses($settings['egens_hero_search_placeholder_text'], wp_kses_allowed_html('post')) : '') ?>"> <button type="submit"> <i class="bi bi-search"></i> <span> <b><?php echo count( json_decode(json_encode($response->data),true) ) ?></b> <?php echo esc_html__('jobb','egenslab') ?> </span> </button>
                             </form>
                         </div>
                     </div>
