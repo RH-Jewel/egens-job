@@ -16,6 +16,7 @@ function register_egens_widget( $widgets_manager ) {
 	require_once( __DIR__ . '/ele-widgets/blog_widget.php' );
 	require_once( __DIR__ . '/ele-widgets/whistleblower_widget.php' );
 	require_once( __DIR__ . '/ele-widgets/work_steps_widget.php' );
+	require_once( __DIR__ . '/ele-widgets/button_with_job_count.php' );
 
 	//registering widgets
 	$widgets_manager->register( new \Elementor_Hero_Widget() );
@@ -31,6 +32,7 @@ function register_egens_widget( $widgets_manager ) {
 	$widgets_manager->register( new \Elementor_Blog_Widget() );
 	$widgets_manager->register( new \Elementor_Whistleblower_Widget() );
 	$widgets_manager->register( new \Elementor_Work_Steps_Widget() );
+	$widgets_manager->register( new \Elementor_Button_With_Job_Count() );
 
 }
 

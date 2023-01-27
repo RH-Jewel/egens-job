@@ -41,6 +41,15 @@ add_action('wp_head', 'egenslab_pingback_header');
 
 // Fetch All Sweden City from API
 
+function get_all_sweden_city_array() {
+	$all_swiden_city = get_all_sweden_city();
+	$return_val = [];
+	foreach ( $all_swiden_city as $value ) {
+		$return_val[$value['cityId']] = $value['name'];
+	}
+	return $return_val;
+}
+
 function get_all_sweden_city()
 {
 	$curl = curl_init();
