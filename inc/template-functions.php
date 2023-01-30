@@ -283,7 +283,7 @@ function get_job_by_filter_title_list_ajax_handler()
 					<div class="job-post__specification">
 						<a href="#"><?php echo $jobs['city'] ?? ''  ?></a>
 						<span class="job-post__delimiter">|</span>
-						<a href="#"><?php echo $jobs['position'] ?? '' ?></a>
+						<a href="#"><?php echo ($jobs['position']=='fullTime') ? 'heltid': $jobs['position'] ?? '' ?></a>
 					</div>
 					<div class="job-post__description">
 						<div class="d-none d-xl-block">
@@ -341,7 +341,7 @@ function get_job_by_pagination_ajax_handler() {
 					<div class="job-post__specification">
 						<a href="#"><?php echo $jobs['city'] ?? ''  ?></a>
 						<span class="job-post__delimiter">|</span>
-						<a href="#"><?php echo $jobs['position'] ?? '' ?></a>
+						<a href="#"><?php echo ($jobs['position']=='fullTime') ? 'heltid': $jobs['position'] ?? '' ?></a>
 					</div>
 					<div class="job-post__description">
 						<div class="d-none d-xl-block">

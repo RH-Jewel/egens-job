@@ -182,7 +182,7 @@ $positionArray = unique_multidim_array($positionArray,'position');
 							<div class="job-post__specification">
 								<a href="#"><?php echo $jobs['city'] ?? ''  ?></a>
 								<span class="job-post__delimiter">|</span>
-								<a href="#"><?php echo $jobs['position'] ?? '' ?></a>
+								<a href="#"><?php echo ($jobs['position']=='fullTime') ? 'heltid': $jobs['position'] ?? '' ?></a>
 							</div>
 							<div class="job-post__description">
 								<div class="d-none d-xl-block">
