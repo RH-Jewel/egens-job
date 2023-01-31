@@ -207,7 +207,7 @@ function get_job_by_filter_title_list_ajax_handler()
 	if (!empty($_POST['jobInfo']['jobSearchKeyword'])) {
 		$searchKeyword = $_POST['jobInfo']['jobSearchKeyword'];
 		$titleListJob = $titleListJob = array_filter($response['data'], function ($item) use ($searchKeyword) {
-			if (stripos($item['title'], $searchKeyword) !== false || stripos($item['city'], $searchKeyword) !== false || stripos($item['title'], $searchKeyword)) {
+			if (stripos($item['title'], $searchKeyword) !== false || stripos($item['city'], $searchKeyword) !== false || stripos($item['name'], $searchKeyword)) {
 				return true;
 			}
 			return false;
