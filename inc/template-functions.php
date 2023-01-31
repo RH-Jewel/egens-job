@@ -41,10 +41,11 @@ add_action('wp_head', 'egenslab_pingback_header');
 
 // Fetch All Sweden City from API
 
-function get_all_sweden_city_array() {
+function get_all_sweden_city_array()
+{
 	$all_swiden_city = get_all_sweden_city();
 	$return_val = [];
-	foreach ( $all_swiden_city as $value ) {
+	foreach ($all_swiden_city as $value) {
 		$return_val[$value['cityId']] = $value['name'];
 	}
 	return $return_val;
@@ -79,34 +80,35 @@ function get_all_sweden_city()
 }
 
 // Make array unique by value
-function unique_multidim_array($array, $key) { 
-	$temp_array = array(); 
-	$i = 0; 
-	$key_array = array(); 
+function unique_multidim_array($array, $key)
+{
+	$temp_array = array();
+	$i = 0;
+	$key_array = array();
 
-	foreach($array as $val) { 
-		if (!in_array($val[$key], $key_array)) { 
-			$key_array[$i] = $val[$key]; 
-			$temp_array[$i] = $val; 
-		} 
-		$i++; 
-	} 
-	return $key_array; 
+	foreach ($array as $val) {
+		if (!in_array($val[$key], $key_array)) {
+			$key_array[$i] = $val[$key];
+			$temp_array[$i] = $val;
+		}
+		$i++;
+	}
+	return $key_array;
 }
 
 // Camel case to string 
 function camelCaseToString($str)
 {
-    $formattedStr = '';
-    $re = '/
+	$formattedStr = '';
+	$re = '/
           (?<=[a-z])
           (?=[A-Z])
         | (?<=[A-Z])
           (?=[A-Z][a-z])
         /x';
-    $a = preg_split($re, $str);
-    $formattedStr = implode(' ', $a);
-    return $formattedStr;
+	$a = preg_split($re, $str);
+	$formattedStr = implode(' ', $a);
+	return $formattedStr;
 }
 
 // Fetch All Job Post Data from API
@@ -187,7 +189,7 @@ function get_job_by_filter_title_list_ajax_handler()
 	$response = json_decode(json_encode($response), true);
 
 	// Filter by Title 
-	if ( isset($_POST['jobInfo']['filterTitleList']) ) {
+	if (isset($_POST['jobInfo']['filterTitleList'])) {
 		$titleList = $_POST['jobInfo']['filterTitleList'];
 		$titleListJob = array_filter(
 			$response['data'],
@@ -202,10 +204,10 @@ function get_job_by_filter_title_list_ajax_handler()
 
 	// Job Search by Keyword 
 
-	if( !empty( $_POST['jobInfo']['jobSearchKeyword'] ) ) {
+	if (!empty($_POST['jobInfo']['jobSearchKeyword'])) {
 		$searchKeyword = $_POST['jobInfo']['jobSearchKeyword'];
 		$titleListJob = $titleListJob = array_filter($response['data'], function ($item) use ($searchKeyword) {
-			if ( stripos($item['title'], $searchKeyword) !== false || stripos( $item['city'], $searchKeyword) !== false || stripos( $item['title'], $searchKeyword ) ) {
+			if (stripos($item['title'], $searchKeyword) !== false || stripos($item['city'], $searchKeyword) !== false || stripos($item['title'], $searchKeyword)) {
 				return true;
 			}
 			return false;
@@ -213,7 +215,7 @@ function get_job_by_filter_title_list_ajax_handler()
 	}
 
 	// Filter by City 
-	if ( isset($_POST['jobInfo']['filterCityList']) ) {
+	if (isset($_POST['jobInfo']['filterCityList'])) {
 		$jobCityId = $_POST['jobInfo']['filterCityList'];
 		$titleListJob = array_filter($titleListJob, function ($var) use ($jobCityId) {
 			return in_array($var['cityId'], $jobCityId);
@@ -223,7 +225,7 @@ function get_job_by_filter_title_list_ajax_handler()
 	}
 
 	// Filter by Position Type 
-	if ( isset($_POST['jobInfo']['filterPositionTypeList']) ) {
+	if (isset($_POST['jobInfo']['filterPositionTypeList'])) {
 		$positionTypeList = $_POST['jobInfo']['filterPositionTypeList'];
 		$titleListJob = array_filter($titleListJob, function ($var) use ($positionTypeList) {
 			return in_array($var['positionType'], $positionTypeList);
@@ -231,9 +233,9 @@ function get_job_by_filter_title_list_ajax_handler()
 	} else {
 		$titleListJob = $titleListJob;
 	}
-	
+
 	// Filter by Position 
-	if ( isset($_POST['jobInfo']['filterPositionList']) ) {
+	if (isset($_POST['jobInfo']['filterPositionList'])) {
 		$positionList = $_POST['jobInfo']['filterPositionList'];
 		$titleListJob = array_filter($titleListJob, function ($var) use ($positionList) {
 			return in_array($var['position'], $positionList);
@@ -242,12 +244,12 @@ function get_job_by_filter_title_list_ajax_handler()
 		$titleListJob = $titleListJob;
 	}
 ?>
-		<div class="row">
-			<div class="col">
-				<div class="d-flex justify-content-between flex-column flex-md-row search-result__wrapper">
-					<span class="search-result__counter">
-						Din sökning gav <?php echo count( $titleListJob ) ?> träffar			</span>
-					<!-- <ul class="job-archive__orderby d-flex">
+	<div class="row">
+		<div class="col">
+			<div class="d-flex justify-content-between flex-column flex-md-row search-result__wrapper">
+				<span class="search-result__counter">
+					Din sökning gav <?php echo count($titleListJob) ?> träffar </span>
+				<!-- <ul class="job-archive__orderby d-flex">
 						<li>
 							<input type="radio" name="orderby" value="post_date" id="orderbydate"  checked='checked'>
 							<label for="orderbydate">
@@ -259,9 +261,9 @@ function get_job_by_filter_title_list_ajax_handler()
 								Stad</a>
 							</label>
 					</ul> -->
-				</div>
 			</div>
 		</div>
+	</div>
 	<?php foreach ($titleListJob as $jobs) : ?>
 		<div class="job-post">
 			<div class="row">
@@ -283,7 +285,7 @@ function get_job_by_filter_title_list_ajax_handler()
 					<div class="job-post__specification">
 						<a href="#"><?php echo $jobs['city'] ?? ''  ?></a>
 						<span class="job-post__delimiter">|</span>
-						<a href="#"><?php echo ($jobs['position']=='fullTime') ? 'heltid': $jobs['position'] ?? '' ?></a>
+						<a href="#"><?php echo ($jobs['position'] == 'fullTime') ? 'heltid' : $jobs['position'] ?? '' ?></a>
 					</div>
 					<div class="job-post__description">
 						<div class="d-none d-xl-block">
@@ -310,17 +312,18 @@ add_action('wp_ajax_nopriv_get_job_by_filter_title_list', 'get_job_by_filter_tit
 
 // Job Pagination 
 
-function get_job_by_pagination_ajax_handler() {
+function get_job_by_pagination_ajax_handler()
+{
 	global $wp;
 	$response = get_all_job_post();
 	$jobArray = $response->data;
-	$jobArray = json_decode( json_encode($jobArray),true );
-	
+	$jobArray = json_decode(json_encode($jobArray), true);
+
 	// Job Post Pagination 
-	$pages_links_and_data = paginate_job_posts( $jobArray,4, $_POST['page_number'] );
-	
-	?>
-	<?php foreach( $pages_links_and_data['data'] as $jobs ) : ?>
+	$pages_links_and_data = paginate_job_posts($jobArray, 4, $_POST['page_number']);
+
+?>
+	<?php foreach ($pages_links_and_data['data'] as $jobs) : ?>
 		<div class="job-post">
 			<div class="row">
 				<div class="col-xl-2 my-auto">
@@ -341,7 +344,7 @@ function get_job_by_pagination_ajax_handler() {
 					<div class="job-post__specification">
 						<a href="#"><?php echo $jobs['city'] ?? ''  ?></a>
 						<span class="job-post__delimiter">|</span>
-						<a href="#"><?php echo ($jobs['position']=='fullTime') ? 'heltid': $jobs['position'] ?? '' ?></a>
+						<a href="#"><?php echo ($jobs['position'] == 'fullTime') ? 'heltid' : $jobs['position'] ?? '' ?></a>
 					</div>
 					<div class="job-post__description">
 						<div class="d-none d-xl-block">
@@ -358,14 +361,16 @@ function get_job_by_pagination_ajax_handler() {
 			</div>
 		</div>
 	<?php endforeach ?>
-<?php die(); }
+<?php die();
+}
 
 add_action('wp_ajax_get_job_by_pagination', 'get_job_by_pagination_ajax_handler'); // wp_ajax_{action}
 add_action('wp_ajax_nopriv_get_job_by_pagination', 'get_job_by_pagination_ajax_handler'); // wp_ajax_nopriv_{action}
 
 // Job Post Pagination
 
-function paginate_job_posts($data , $page_size = 4, $page = 1 ) {
+function paginate_job_posts($data, $page_size = 4, $page = 1)
+{
 	// The page to display (Usually is received in a url parameter)
 
 	$page = $page;
@@ -429,12 +434,13 @@ function paginate_job_posts($data , $page_size = 4, $page = 1 ) {
 }
 
 // Save Jobs
-function save_jobs_ajax_handler() {
+function save_jobs_ajax_handler()
+{
 	$all_jobs = get_all_job_post();
 	$all_jobs = json_decode(json_encode($all_jobs), true);
 	$jobIdArray = $_POST['job_id_array'];
 
-	if ( isset($jobIdArray) ) {
+	if (isset($jobIdArray)) {
 		$jobCityId = $jobIdArray;
 		$all_jobs = array_filter($all_jobs['data'], function ($var) use ($jobCityId) {
 			return in_array($var['jobPostId'], $jobCityId);
@@ -442,21 +448,21 @@ function save_jobs_ajax_handler() {
 	} else {
 		$all_jobs = $all_jobs;
 	}
-	$new_array = array_column($all_jobs, 'name','jobPostId');
+	$new_array = array_column($all_jobs, 'name', 'jobPostId');
 
 	$save_jobs_html = '';
 
 	foreach ($new_array as $key => $value) {
 		$save_jobs_html .= '
 		<div class="likebar__job">
-			<a href="https://www.uniflex.se/jobb/truckforare-kyllager-frukt-gront-61897/">
-				<h3>'.$value.'</h3>
+			<a href="' . $_POST['page_url'] . '?job_id=' . $key['jobPostId'] . '&slug=' . strtolower(preg_replace('/[^A-Za-z0-9-]+/', '-', $value)) . '">
+				<h3>' . $value . '</h3>
 			</a>
-			<button class="js-remove-job" data-save-job-id="'.$key.'"><i class="bi bi-x-lg"></i></button>
+			<button class="js-remove-job" data-save-job-id="' . $key . '"><i class="bi bi-x-lg"></i></button>
 		</div>
 		';
 	}
-	print_r( $save_jobs_html );
+	print_r($save_jobs_html);
 }
 
 add_action('wp_ajax_save_jobs', 'save_jobs_ajax_handler'); // wp_ajax_{action}
