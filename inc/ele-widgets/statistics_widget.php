@@ -94,10 +94,7 @@ class Elementor_Statistics_Widget extends \Elementor\Widget_Base
                         'egens_statistics_stat_title' => esc_html__('nya kandidater varje månad', 'egenslab'),
                         'list_content' => esc_html__('Item content. Click the edit button to change this text.', 'egenslab'),
                     ],
-                    [
-                        'egens_statistics_stat_title' => esc_html__('lediga jobb', 'egenslab'),
-                        'list_content' => esc_html__('Item content. Click the edit button to change this text.', 'egenslab'),
-                    ],
+                    
                 ],
                 'title_field' => '{{{ egens_statistics_stat_title }}}',
             ]
@@ -132,15 +129,16 @@ class Elementor_Statistics_Widget extends \Elementor\Widget_Base
                 </div>
             </div>
             <div class="row no-gutters js-statistics-slider statistics-row">
-                <div class="col-md-12 col-lg-6 flex-column justify-content-center d-none d-md-flex">
+                <div class="col-md-6 col-lg-6 flex-column justify-content-center d-none d-md-flex">
                     <div class="statistics-block-heading">
                         <div class="entry-content">
                             <h2 class="h2--xl"><?php echo (!empty($settings['egens_statistics_heading']) ? esc_html__($settings['egens_statistics_heading'], 'egenslab') : '') ?></h2>
                         </div>
                     </div>
                 </div>
-                <?php foreach ($data as $item) : ?>
-                    <div class="col-md-6 col-lg-3 d-inline-block d-md-flex statistics-block flex-column align-items-start align-items-md-center justify-content-start justify-content-md-center js-slick-slide">
+                <?php foreach ($data as $key=> $item) : ?>
+                    <?php $key++ ; ?>
+                    <div class="<?php echo($key==1 | $key==2) ? 'col-md-3':'col-md-6' ?> col-lg-3 d-inline-block d-md-flex statistics-block flex-column align-items-start align-items-md-center justify-content-start justify-content-md-center js-slick-slide">
                         <div class="statistics-wrapper primary-color-bg white-text-color d-flex justify-content-center align-items-center">
                             <div class="statistics-content d-flex align-items-center">
                                 <div class="entry-content d-flex flex-column text-center"> <span class="statistics-block__heading"><?php echo (!empty($item['egens_statistics_stat_number']) ? esc_html__($item['egens_statistics_stat_number'], 'egenslab') : '') ?></span>
@@ -150,15 +148,18 @@ class Elementor_Statistics_Widget extends \Elementor\Widget_Base
                         </div>
                     </div>
                 <?php endforeach ?>
+                
                 <div class="col-md-6 col-lg-3 d-inline-block d-md-flex statistics-block flex-column align-items-start align-items-md-center justify-content-start justify-content-md-center js-slick-slide">
-                    <div class="statistics-wrapper primary-color-bg white-text-color d-flex justify-content-center align-items-center">
-                        <div class="statistics-content d-flex align-items-center">
-                            <div class="entry-content d-flex flex-column text-center"> <span class="statistics-block__heading"><?php echo count( $response['data'] ) ?></span>
-                                <p>ledige jobber</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+					<div class="statistics-wrapper primary-color-bg white-text-color d-flex justify-content-center align-items-center">
+						<div class="statistics-content d-flex align-items-center">
+							<div class="entry-content d-flex flex-column text-center">
+								<span class="statistics-block__heading"><?php echo count( $response['data'] ) ?></span>
+								<p>lediga jobb</p>
+							</div>
+						</div>
+					</div>
+				</div>
+
             </div>
         </section>
 
